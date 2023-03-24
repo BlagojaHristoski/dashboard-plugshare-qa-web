@@ -36,7 +36,7 @@ Scenario('History button redirects to check in history page', async ({ I }) => {
   await locationsPage.navigateToLocations()
   await locationsPage.firstEnabledHistoryButtonClick()
   await I.switchToNextTab()
-  await I.shouldSeeEle(locationsHistoryPage.checkInHistoryTitle, basePage.timeoutSec)
+  await I.waitForElement(locationsHistoryPage.checkInHistoryTitle, basePage.timeoutSec)
   const historyPageTitle = await I.grabTextFrom(locationsHistoryPage.checkInHistoryTitle)
 
   assert(historyPageTitle === ' Check-in History ')
@@ -211,7 +211,7 @@ Scenario('Verify that user is able to create a broadcast', async ({ I }) => {
   await locationsPage.navigateToLocations()
   await locationsPage.deleteActiveBroadcastIfExists()
   await locationsPage.addBroadcast(broadcast)
-  await I.shouldSeeEle(locationsPage.activeBroadcastButton, basePage.timeoutSec)
+  await I.waitForElement(locationsPage.activeBroadcastButton, basePage.timeoutSec)
 }).tag('@dashboard').tag('@LocationsEntriesTests').tag('@C610405')
 
 Scenario('Verify that user is able to "Clear Current Broadcast"', async ({ I }) => {

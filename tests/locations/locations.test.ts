@@ -22,7 +22,7 @@ Before(async () => {
   await basePage.signInDashboard()
 })
 Scenario('Verify that user is navigated to "Add New Location" page on click on "Create New Location" button', async ({ I }) => {
-  await I.shouldSeeEle(basePage.logoutButton, basePage.timeoutSec)
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsAddNewLocationPage.navigateToLocations()
   await I.seeInCurrentUrl('/locations')
 }).tag('@dashboard').tag('@LocationsTests').tag('@C614247')
@@ -31,7 +31,7 @@ Scenario('Verify that user is able to Create New Location and then is successful
   const randomNumber = await I.generateRandomNumber(100000, 999999)
   const newLocationName = `${locationName} ${randomNumber}`
 
-  await I.shouldSeeEle(basePage.logoutButton, basePage.timeoutSec)
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsAddNewLocationPage.navigateToAddNewLocation()
   await locationsAddNewLocationPage.populateLocationDetailsForNewLocation(newLocationName, locationAddress, locationLatitude, locationLongitude, locationDescription, costDescription, accessOption)
   await locationsAddNewLocationPage.populateStationsForNewLocation(stationName, stationCostDescription, costOption)
@@ -45,7 +45,7 @@ Scenario('Verify that user is able to Create New Location and then is successful
 Scenario('Verify that user isn\'t able to Create Location leaving Name field empty', async ({ I }) => {
   const emptyName = ''
 
-  await I.shouldSeeEle(basePage.logoutButton, basePage.timeoutSec)
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsAddNewLocationPage.navigateToAddNewLocation()
   await locationsAddNewLocationPage.populateLocationDetailsForNewLocation(emptyName, locationAddress, locationLatitude, locationLongitude, locationDescription, costDescription, accessOption)
   await locationsAddNewLocationPage.populateStationsForNewLocation(stationName, stationCostDescription, costOption)
@@ -59,7 +59,7 @@ Scenario('Verify that user isn\'t able to Create Location leaving Address field 
   const newLocationName = `${locationName} ${randomNumber}`
   const emptyAddress = ''
 
-  await I.shouldSeeEle(basePage.logoutButton, basePage.timeoutSec)
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsAddNewLocationPage.navigateToAddNewLocation()
   await locationsAddNewLocationPage.populateLocationDetailsForNewLocation(newLocationName, emptyAddress, locationLatitude, locationLongitude, locationDescription, costDescription, accessOption)
   await locationsAddNewLocationPage.populateStationsForNewLocation(stationName, stationCostDescription, costOption)
@@ -72,7 +72,7 @@ Scenario('Verify that user isn\'t able to Create Location leaving Access dropdow
   const randomNumber = await I.generateRandomNumber(100000, 999999)
   const newLocationName = `${locationName} ${randomNumber}`
 
-  await I.shouldSeeEle(basePage.logoutButton, basePage.timeoutSec)
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsAddNewLocationPage.navigateToAddNewLocation()
   await locationsAddNewLocationPage.populateLocationDetailsForNewLocation(newLocationName, locationAddress, locationLatitude, locationLongitude, locationDescription, costDescription)
   await locationsAddNewLocationPage.populateStationsForNewLocation(stationName, stationCostDescription, costOption)
@@ -86,7 +86,7 @@ Scenario('Verify that user isn\'t able to Create Location leaving Latitude field
   const newLocationName = `${locationName} ${randomNumber}`
   const emptyLatitude = ''
 
-  await I.shouldSeeEle(basePage.logoutButton, basePage.timeoutSec)
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsAddNewLocationPage.navigateToAddNewLocation()
   await locationsAddNewLocationPage.populateLocationDetailsForNewLocation(newLocationName, locationAddress, emptyLatitude, locationLongitude, locationDescription, costDescription, accessOption)
   await locationsAddNewLocationPage.populateStationsForNewLocation(stationName, stationCostDescription, costOption)
@@ -100,7 +100,7 @@ Scenario('Verify that user isn\'t able to Create Location leaving Longitude fiel
   const newLocationName = `${locationName} ${randomNumber}`
   const emptyLongitude = ''
 
-  await I.shouldSeeEle(basePage.logoutButton, basePage.timeoutSec)
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsAddNewLocationPage.navigateToAddNewLocation()
   await locationsAddNewLocationPage.populateLocationDetailsForNewLocation(newLocationName, locationAddress, locationLatitude, emptyLongitude, locationDescription, costDescription, accessOption)
   await locationsAddNewLocationPage.populateStationsForNewLocation(stationName, stationCostDescription, costOption)
@@ -113,7 +113,7 @@ Scenario('Verify that after user creates new location, the location is displayed
   const randomNumber = await I.generateRandomNumber(100000, 999999)
   const newLocationName = `${locationName} ${randomNumber}`
 
-  await I.shouldSeeEle(basePage.logoutButton, basePage.timeoutSec)
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsAddNewLocationPage.navigateToAddNewLocation()
   await locationsAddNewLocationPage.populateLocationDetailsForNewLocation(newLocationName, locationAddress, locationLatitude, locationLongitude, locationDescription, costDescription, accessOption)
   await locationsAddNewLocationPage.populateStationsForNewLocation(stationName, stationCostDescription, costOption)
@@ -128,7 +128,7 @@ Scenario('Verify that after user creates new location, the location is displayed
 Scenario('Verify that user is able to see that the default value of items per page is 25', async ({ I }) => {
   const numberOfItems = 25
 
-  await I.shouldSeeEle(basePage.logoutButton, basePage.timeoutSec)
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsAddNewLocationPage.navigateToLocations()
   await locationsPage.changeItemsPerPageTopDropDown(numberOfItems)
   await basePage.waitForProgressBar()
@@ -140,7 +140,7 @@ Scenario('Verify that user is able to see that the default value of items per pa
 Scenario('Verify that user is able to see 5 items per page', async ({ I }) => {
   const numberOfItems = 5
 
-  await I.shouldSeeEle(basePage.logoutButton, basePage.timeoutSec)
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsAddNewLocationPage.navigateToLocations()
   await locationsPage.changeItemsPerPageTopDropDown(numberOfItems)
   await basePage.waitForProgressBar()
@@ -152,7 +152,7 @@ Scenario('Verify that user is able to see 5 items per page', async ({ I }) => {
 Scenario('Verify that user is able to see 10 items per page', async ({ I }) => {
   const numberOfItems = 10
 
-  await I.shouldSeeEle(basePage.logoutButton, basePage.timeoutSec)
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsAddNewLocationPage.navigateToLocations()
   await locationsPage.changeItemsPerPageTopDropDown(numberOfItems)
   await basePage.waitForProgressBar()
@@ -164,7 +164,7 @@ Scenario('Verify that user is able to see 10 items per page', async ({ I }) => {
 Scenario('Verify that user is able to see 100 items per page', async ({ I }) => {
   const numberOfItems = 100
 
-  await I.shouldSeeEle(basePage.logoutButton, basePage.timeoutSec)
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsAddNewLocationPage.navigateToLocations()
   await locationsPage.changeItemsPerPageTopDropDown(numberOfItems)
   await basePage.waitForProgressBar()
@@ -174,7 +174,7 @@ Scenario('Verify that user is able to see 100 items per page', async ({ I }) => 
 }).tag('@dashboard').tag('@LocationsTests').tag('@C657631')
 
 Scenario('Verify that alert is displayed when user click anywhere on the menu with unsaved changes in "Add New Location', async ({ I }) => {
-  await I.shouldSeeEle(basePage.logoutButton, basePage.timeoutSec)
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsAddNewLocationPage.navigateToAddNewLocation()
   await locationsPage.locationsButtonClick()
   await I.checkTextInPopUp('WARNING: You have unsaved changes. Press Cancel to go back and save these changes, or OK to lose these changes.')
