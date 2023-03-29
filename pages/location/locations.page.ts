@@ -65,7 +65,7 @@ export class LocationsPage extends BasePage {
   // methods
   async navigateToLocations () {
     await I.amOnPage('/locations')
-    await I.waitForElement(locationsPage.createNewLocationButton, basePage.timeoutSec)
+    await I.waitForElement(locationsPage.searchAndApplyFiltersButton, basePage.timeoutSec)
   }
 
   async clickOnCreateNewLocation () {

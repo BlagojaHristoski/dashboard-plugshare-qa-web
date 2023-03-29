@@ -30,22 +30,14 @@ export class BasePage {
   }
 
   async signInDashboard () {
-    await I.waitForVisibleEle(this.loginField, this.timeoutSec)
-    await I.fillEleField(this.loginField, email)
-    await I.fillEleField(this.passwordField, password)
-    await I.clickEle(this.loginButton, this.timeoutSec)
+    await I.waitForElement(this.loginField, this.timeoutSec)
+    await I.fillField(this.loginField, email)
+    await I.fillField(this.passwordField, password)
+    await I.click(this.loginButton)
   }
 
   async validateLoginUser () {
-    await I.waitForEle(basePage.logoutButton, basePage.timeoutSec)
-  }
-
-  async shouldSeeElement (ele) {
-    await I.shouldSeeEle(ele, this.timeoutSec)
-  }
-
-  async shouldSeeInUrl (url: string) {
-    await I.seeInCurrentUrl(url)
+    await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   }
 
   async waitForProgressBar () {

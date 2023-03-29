@@ -53,142 +53,144 @@ export class LocationsEditLocationPage extends BasePage {
 
   // Methods
   async googleLocationButtonClick () {
-    await I.clickEle(this.googleLocationButton, basePage.timeoutSec)
+    await I.waitForElement(this.googleLocationButton, basePage.timeoutSec)
+    await I.click(this.googleLocationButton)
   }
 
   async navigateToGoogleMapsLocationButtonClick () {
-    await I.waitForEle(this.navigateToGoogleMapsLocationButton, basePage.timeoutSec)
-    await I.clickEle(this.navigateToGoogleMapsLocationButton, basePage.timeoutSec)
+    await I.waitForElement(this.navigateToGoogleMapsLocationButton, basePage.timeoutSec)
+    await I.click(this.navigateToGoogleMapsLocationButton)
   }
 
   async validateEditLocationPage () {
-    await I.waitForEle(this.editLocationFormContainer, basePage.timeoutSec)
+    await I.waitForElement(this.editLocationFormContainer, basePage.timeoutSec)
     await I.see('Location Details')
-    await I.shouldSeeEle(this.locationIdField, basePage.timeoutSec)
-    await I.shouldSeeEle(this.locationPlugScoreField, basePage.timeoutSec)
-    await I.shouldSeeEle(this.locationLocaleField, basePage.timeoutSec)
-    await I.shouldSeeEle(this.locationCreatedAtField, basePage.timeoutSec)
-    await I.shouldSeeEle(this.locationLastUpdatedAtField, basePage.timeoutSec)
-    await I.shouldSeeEle(this.locationNameField, basePage.timeoutSec)
+    await I.seeElement(this.locationIdField)
+    await I.seeElement(this.locationPlugScoreField)
+    await I.seeElement(this.locationLocaleField)
+    await I.seeElement(this.locationCreatedAtField)
+    await I.seeElement(this.locationLastUpdatedAtField)
+    await I.seeElement(this.locationNameField)
     await I.see('Photos')
-    await I.shouldSeeEle(this.uploadNewCoverPhotosButton, basePage.timeoutSec)
-    await I.shouldSeeEle(locationsAddNewLocationPage.newLocationAddressField, basePage.timeoutSec)
-    await I.shouldSeeEle(locationsAddNewLocationPage.latitudeField, basePage.timeoutSec)
-    await I.shouldSeeEle(locationsAddNewLocationPage.longitudeField, basePage.timeoutSec)
-    await I.shouldSeeEle(locationsAddNewLocationPage.googleMaps, basePage.timeoutSec)
-    await I.shouldSeeEle(locationsAddNewLocationPage.descriptionField, basePage.timeoutSec)
-    await I.shouldSeeEle(locationsAddNewLocationPage.phoneField, basePage.timeoutSec)
-    await I.shouldSeeEle(locationsAddNewLocationPage.hoursField, basePage.timeoutSec)
-    await I.shouldSeeEle(locationsAddNewLocationPage.costDescriptionField, basePage.timeoutSec)
-    await I.shouldSeeEle(locationsAddNewLocationPage.accessDropDown, basePage.timeoutSec)
-    await I.shouldSeeEle(locationsAddNewLocationPage.pOIDropDown, basePage.timeoutSec)
+    await I.seeElement(this.uploadNewCoverPhotosButton)
+    await I.seeElement(locationsAddNewLocationPage.newLocationAddressField)
+    await I.seeElement(locationsAddNewLocationPage.latitudeField)
+    await I.seeElement(locationsAddNewLocationPage.longitudeField)
+    await I.seeElement(locationsAddNewLocationPage.googleMaps)
+    await I.seeElement(locationsAddNewLocationPage.descriptionField)
+    await I.seeElement(locationsAddNewLocationPage.phoneField)
+    await I.seeElement(locationsAddNewLocationPage.hoursField)
+    await I.seeElement(locationsAddNewLocationPage.costDescriptionField)
+    await I.seeElement(locationsAddNewLocationPage.accessDropDown)
+    await I.seeElement(locationsAddNewLocationPage.pOIDropDown)
     await this.validateReportProblemContainer()
   }
 
   async updateAllButtonClick () {
-    await I.waitForEle(this.updateAllButton, basePage.timeoutSec)
-    await I.clickEle(this.updateAllButton, basePage.timeoutSec)
+    await I.waitForElement(this.updateAllButton, basePage.timeoutSec)
+    await I.click(this.updateAllButton)
   }
 
   async validateReportProblemContainer () {
-    await I.waitForEle(this.reportProblemDescribeField, basePage.timeoutSec)
+    await I.waitForElement(this.reportProblemDescribeField, basePage.timeoutSec)
     await I.see('Report Problem')
     await I.see('For all other issues, please send us a message and we\'ll correct the issue. We\'ll resolve the issue or get back to you in less than one business day.')
-    await I.shouldSeeEle(this.reportProblemButton, this.timeoutSec)
+    await I.seeElement(this.reportProblemButton)
   }
 
   async editLocationName (newName) {
-    await I.waitForEle(this.locationNameField, basePage.timeoutSec)
-    await I.fillEleField(this.locationNameField, newName)
-    await I.clickEle(this.updateAllButton, basePage.timeoutSec)
+    await I.waitForElement(this.locationNameField, basePage.timeoutSec)
+    await I.fillField(this.locationNameField, newName)
+    await I.click(this.updateAllButton)
   }
 
   async editLocationAddress (newAddress) {
-    await I.waitForEle(locationsAddNewLocationPage.newLocationAddressField, basePage.timeoutSec)
-    await I.fillEleField(locationsAddNewLocationPage.newLocationAddressField, newAddress)
-    await I.clickEle(this.updateAllButton, basePage.timeoutSec)
+    await I.waitForElement(locationsAddNewLocationPage.newLocationAddressField, basePage.timeoutSec)
+    await I.fillField(locationsAddNewLocationPage.newLocationAddressField, newAddress)
+    await I.click(this.updateAllButton)
   }
 
   async pinPhotos () {
-    await I.waitForEle(this.locationPhotos, this.timeoutSec)
+    await I.waitForElement(this.locationPhotos, this.timeoutSec)
     await I.moveCursorTo(this.locationPhotos, 5, 5)
-    await I.clickEle(this.pinPhoto, this.timeoutSec)
+    await I.click(this.pinPhoto)
   }
 
   async unpinPhotos () {
-    await I.clickEle(this.unpinPhoto, this.timeoutSec)
+    await I.waitForElement(this.unpinPhoto, this.timeoutSec)
+    await I.click(this.unpinPhoto)
   }
 
   async changeMapTypeToTerrain () {
-    await I.waitForEle(this.mapButtonGoogleMaps, this.timeoutSec)
-    await I.clickEle(this.mapButtonGoogleMaps, this.timeoutSec)
-    await I.waitForEle(this.terrainMapType, this.timeoutSec)
-    await I.clickEle(this.terrainMapType, this.timeoutSec)
+    await I.waitForElement(this.mapButtonGoogleMaps, this.timeoutSec)
+    await I.click(this.mapButtonGoogleMaps)
+    await I.waitForElement(this.terrainMapType, this.timeoutSec)
+    await I.click(this.terrainMapType)
   }
 
   async changeMapTypeToSatellite () {
-    await I.waitForEle(this.satelliteButtonGoogleMaps, this.timeoutSec)
-    await I.clickEle(this.satelliteButtonGoogleMaps, this.timeoutSec)
+    await I.waitForElement(this.satelliteButtonGoogleMaps, this.timeoutSec)
+    await I.click(this.satelliteButtonGoogleMaps)
   }
 
   async turnOnLabelsOnSatelliteType () {
-    await I.waitForEle(this.satelliteButtonGoogleMaps, this.timeoutSec)
-    await I.clickEle(this.satelliteButtonGoogleMaps, this.timeoutSec)
-    await I.waitForEle(this.labelsOnSatelliteTypeButton, this.timeoutSec)
+    await I.waitForElement(this.satelliteButtonGoogleMaps, this.timeoutSec)
+    await I.click(this.satelliteButtonGoogleMaps)
+    await I.waitForElement(this.labelsOnSatelliteTypeButton, this.timeoutSec)
     const labels = await I.grabAttributeFrom(basePage.labelsOnSatelliteTypeButton, 'aria-checked')
 
     if (!labels) {
-      await I.clickEle(this.labelsOnSatelliteTypeButton, this.timeoutSec)
+      await I.click(this.labelsOnSatelliteTypeButton)
     }
   }
 
   async turnOffLabelsOnSatelliteType () {
-    await I.waitForEle(this.satelliteButtonGoogleMaps, this.timeoutSec)
-    await I.clickEle(this.satelliteButtonGoogleMaps, this.timeoutSec)
-    await I.waitForEle(this.labelsOnSatelliteTypeButton, this.timeoutSec)
+    await I.waitForElement(this.satelliteButtonGoogleMaps, this.timeoutSec)
+    await I.click(this.satelliteButtonGoogleMaps)
+    await I.waitForElement(this.labelsOnSatelliteTypeButton, this.timeoutSec)
     const labels = await I.grabAttributeFrom(basePage.labelsOnSatelliteTypeButton, 'aria-checked')
 
     if (labels) {
-      await I.clickEle(this.labelsOnSatelliteTypeButton, this.timeoutSec)
+      await I.click(this.labelsOnSatelliteTypeButton)
     }
   }
 
   async selectAmenities (all?) {
-    await I.waitForEle(this.lodgingCheckbox, this.timeoutSec)
+    await I.waitForElement(this.lodgingCheckbox, this.timeoutSec)
     if (all) {
-      await I.clickEle(this.lodgingCheckbox, this.timeoutSec)
-      await I.clickEle(this.eVParkingCheckbox, this.timeoutSec)
-      await I.clickEle(this.wiFiCheckbox, this.timeoutSec)
-      await I.clickEle(this.hikingCheckbox, this.timeoutSec)
-      await I.clickEle(this.diningCheckbox, this.timeoutSec)
-      await I.clickEle(this.valetParkingCheckbox, this.timeoutSec)
-      await I.clickEle(this.shoppingCheckbox, this.timeoutSec)
-      await I.clickEle(this.campingCheckbox, this.timeoutSec)
-      await I.clickEle(this.restroomsCheckbox, this.timeoutSec)
-      await I.clickEle(this.parkCheckbox, this.timeoutSec)
-      await I.clickEle(this.groceryCheckbox, this.timeoutSec)
+      await I.click(this.lodgingCheckbox)
+      await I.click(this.eVParkingCheckbox)
+      await I.click(this.wiFiCheckbox)
+      await I.click(this.hikingCheckbox)
+      await I.click(this.diningCheckbox)
+      await I.click(this.valetParkingCheckbox)
+      await I.click(this.shoppingCheckbox)
+      await I.click(this.campingCheckbox)
+      await I.click(this.restroomsCheckbox)
+      await I.click(this.parkCheckbox)
+      await I.click(this.groceryCheckbox)
     } else {
-      await I.clickEle(this.lodgingCheckbox, this.timeoutSec)
-      await I.clickEle(this.eVParkingCheckbox, this.timeoutSec)
-      await I.clickEle(this.parkCheckbox, this.timeoutSec)
+      await I.click(this.lodgingCheckbox)
+      await I.click(this.eVParkingCheckbox)
+      await I.click(this.parkCheckbox)
     }
   }
 
   async selectParkingAttributes (all?) {
-    await I.waitForEle(this.pullThroughParkingOption, this.timeoutSec)
+    await I.waitForElement(this.pullThroughParkingOption, this.timeoutSec)
     if (all) {
-      await I.clickEle(this.pullThroughParkingOption, this.timeoutSec)
-      await I.clickEle(this.pullInParkingOption, this.timeoutSec)
-      await I.clickEle(this.trailerParkingOption, this.timeoutSec)
-      await I.clickEle(this.trailerFriendlyOption, this.timeoutSec)
-      await I.clickEle(this.garageOption, this.timeoutSec)
-      await I.clickEle(this.handicappedParkingOption, this.timeoutSec)
-      await I.clickEle(this.wheelchariAccessibleOption, this.timeoutSec)
-      await I.clickEle(this.illuminatedOption, this.timeoutSec)
+      await I.click(this.pullThroughParkingOption)
+      await I.click(this.pullInParkingOption)
+      await I.click(this.trailerParkingOption)
+      await I.click(this.trailerFriendlyOption)
+      await I.click(this.garageOption)
+      await I.click(this.handicappedParkingOption)
+      await I.click(this.wheelchariAccessibleOption)
+      await I.click(this.illuminatedOption)
     } else {
-      await I.clickEle(this.pullThroughParkingOption, this.timeoutSec)
-      await I.clickEle(this.trailerFriendlyOption, this.timeoutSec)
-      await I.clickEle(this.handicappedParkingOption, this.timeoutSec)
+      await I.click(this.pullThroughParkingOption)
+      await I.click(this.trailerFriendlyOption)
+      await I.click(this.handicappedParkingOption)
     }
   }
 
@@ -197,9 +199,9 @@ export class LocationsEditLocationPage extends BasePage {
     const day = date.getDate()
     const openingDateLocator = `//div[text()=" ${day} "]`
 
-    await I.waitForEle(this.openingDateDropDown, this.timeoutSec)
-    await I.clickEle(this.openingDateDropDown, this.timeoutSec)
-    await I.clickEle(openingDateLocator, this.timeoutSec)
+    await I.waitForElement(this.openingDateDropDown, this.timeoutSec)
+    await I.click(this.openingDateDropDown)
+    await I.click(openingDateLocator)
   }
 
   async selectOpenedAtDate () {
@@ -209,18 +211,18 @@ export class LocationsEditLocationPage extends BasePage {
     const previouslyAddedOpenedAtDate = await I.grabNumberOfVisibleElements(this.openedAtEditButton)
 
     if (previouslyAddedOpenedAtDate) {
-      await I.clickEle(this.openedAtEditButton, this.timeoutSec)
+      await I.click(this.openedAtEditButton)
     }
-    await I.waitForEle(this.openedAtDropDown, this.timeoutSec)
-    await I.clickEle(this.openedAtDropDown, this.timeoutSec)
+    await I.waitForElement(this.openedAtDropDown, this.timeoutSec)
+    await I.click(this.openedAtDropDown)
     if (day > 19) {
       const openedAtDateLocator = `//div[text()=" ${day - 10} "]`
 
-      await I.clickEle(openedAtDateLocator, this.timeoutSec)
+      await I.click(openedAtDateLocator)
     } else {
       const openedAtDateLocator = `//div[text()=" ${day + 10} "]`
 
-      await I.clickEle(openedAtDateLocator, this.timeoutSec)
+      await I.click(openedAtDateLocator)
     }
   }
 }
