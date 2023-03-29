@@ -111,12 +111,22 @@ export class LocationsEditLocationPage extends BasePage {
   }
 
   async pinPhotos () {
+    const pin = await I.grabNumberOfVisibleElements(this.unpinPhoto)
+    if (pin) {
+      this.unpinPhotos()
+    }
+
     await I.waitForElement(this.locationPhotos, this.timeoutSec)
     await I.moveCursorTo(this.locationPhotos, 5, 5)
     await I.click(this.pinPhoto)
   }
 
   async unpinPhotos () {
+    const unPin = await I.grabNumberOfVisibleElements(this.unpinPhoto)
+    if (!unPin) {
+      this.pinPhotos()
+    }
+
     await I.waitForElement(this.unpinPhoto, this.timeoutSec)
     await I.click(this.unpinPhoto)
   }

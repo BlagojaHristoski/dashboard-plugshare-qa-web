@@ -28,7 +28,7 @@ Scenario('Verify that user is able to edit location name', async ({ I }) => {
   await I.see(newLocationName)
   await locationsEditLocationPage.editLocationName(locationName)
   await basePage.waitForProgressBar()
-  const name = await I.grabTextFrom(locationsEditLocationPage.locationNameTitle)
+  const name = await I.grabValueFrom(locationsEditLocationPage.locationNameField)
 
   assert(name === locationName)
 }).tag('@dashboard').tag('@C609654')
@@ -157,7 +157,7 @@ Scenario('Verify that user is able to select "Parking Attributes"', async ({ I }
 }).tag('@dashboard').tag('@C610007')
 
 Scenario('Verify that user is able to set "Opening Date" and "Opened At"', async ({ I }) => {
-  await I.waitForEle(basePage.logoutButton, basePage.timeoutSec)
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsPage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocation(locationName)
   await locationsPage.clickOnFirstEditButton()
