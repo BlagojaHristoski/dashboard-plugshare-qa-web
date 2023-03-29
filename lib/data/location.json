@@ -23,5 +23,12 @@
         "addressName": "11835 W Olympic Blvd, Los Angeles 90064",
         "invalidAddressName": "Invalid Address Name"
       }
+    },
+    "edit_location": {
+      "location": {
+        "locationName": "Park 'N Fly",
+        "address": "800 S Royal Ln, Coppell, TX 75019",
+        "phone": "1(877) 494-3833"
+      }
     }
   }
