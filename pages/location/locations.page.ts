@@ -7,9 +7,9 @@ export class LocationsPage extends BasePage {
   get locationsButton () { return '#nav-locations' }
   get locationsTable () { return '.mat-table.cdk-table.mat-elevation-z8' }
   get locationContainer () { return '.mat-row.cdk-row.ng-star-inserted' }
-  get comingSoonCheckbox () { return '#coming-soon-toggle-input' }
-  get underRepairCheckbox () { return '#under-repair-toggle-input' }
-  get hasActiveBroadcastCheckbox () { return '#has-active-broadcast-toggle-input' }
+  get comingSoonCheckbox () { return '#coming-soon-toggle' }
+  get underRepairCheckbox () { return '#under-repair-toggle' }
+  get hasActiveBroadcastCheckbox () { return '#has-active-broadcast-toggle' }
   get locationNameField () { return '#location-name-input' }
   get addressField () { return '#address-input' }
   get stateField () { return '#region-input' }
@@ -32,7 +32,7 @@ export class LocationsPage extends BasePage {
   get tenItemsPerPageOption () { return '//span[text()=" 10 "]' }
   get twentyFiveItemsPerPageOption () { return '//span[text()=" 25 "]' }
   get hundredItemsPerPageOption () { return '//span[text()=" 100 "]' }
-  get nextPageTopButton () { return '//mat-paginator[@id="paginator-top"]//button[@class="mat-focus-indicator mat-tooltip-trigger mat-paginator-navigation-next mat-icon-button mat-button-base"]' }
+  get nextPageTopButton () { return '//mat-paginator[@id="paginator-top"]//button[@ng-reflect-message="Next page"]' }
   get previousPageTopButton () { return '//mat-paginator[@id="paginator-top"]//button[@class="mat-focus-indicator mat-tooltip-trigger mat-paginator-navigation-previous mat-icon-button mat-button-base"]' }
   get nextPageBottomButton () { return '//mat-paginator[@id="paginator-bottom"]//button[@class="mat-focus-indicator mat-tooltip-trigger mat-paginator-navigation-next mat-icon-button mat-button-base"]' }
   get previousPageBottomButton () { return '//mat-paginator[@id="paginator-bottom"]//button[@class="mat-focus-indicator mat-tooltip-trigger mat-paginator-navigation-previous mat-icon-button mat-button-base"]' }
@@ -96,6 +96,11 @@ export class LocationsPage extends BasePage {
   async clickOneditButtonOnLocationDetailsScreen () {
     await I.waitForElement(locationsPage.editButtonOnLocationDetailsScreen, basePage.timeoutSec)
     await I.click(this.editButtonOnLocationDetailsScreen)
+  }
+
+  async clickOnClearSearchButton () {
+    await I.waitForElement(locationsPage.clearSearchButton, basePage.timeoutSec)
+    await I.click(locationsPage.clearSearchButton)
   }
 
   async validatePopUpForEmptyField (emptyField) {

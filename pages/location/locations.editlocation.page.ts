@@ -47,6 +47,8 @@ export class LocationsEditLocationPage extends BasePage {
   get wheelchariAccessibleOption () { return '//span[text()="Wheelchair accessible"]' }
   get illuminatedOption () { return '//span[text()="Illuminated"]' }
   // Locators - Coming Soon
+  get comingSoonCheckbox () { return '#location-coming-soon' }
+  get underRepairCheckbox () { return '#location-under-repair' }
   get openingDateDropDown () { return '//*[@id="location-opening-date-form-field"]//button[@aria-label="Open calendar"]' }
   get openedAtDropDown () { return '//*[@id="location-opened-at-form-field"]//button[@aria-label="Open calendar"]' }
   get openedAtEditButton () { return '//button[@id="location-opened-at-edit-button"]' }

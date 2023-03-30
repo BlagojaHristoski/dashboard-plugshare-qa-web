@@ -23,7 +23,7 @@
     "codeceptjs": "^3.4.1",
     "codeceptjs-chai": "^2.3.4",
     "dotenv": "^16.0.3",
-    "eslint": "^8.35.0",
+    "eslint": "^8.37.0",
     "husky": "^8.0.3",
     "mailslurp": "^0.0.1-security"
   },

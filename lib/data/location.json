@@ -21,7 +21,9 @@
         "location": "LA Test site",
         "invalidName": "Invalid location name",
         "addressName": "11835 W Olympic Blvd, Los Angeles 90064",
-        "invalidAddressName": "Invalid Address Name"
+        "invalidAddressName": "Invalid Address Name",
+        "state": "Los Angeles",
+        "zipCode": "90254"
       }
     },
     "edit_location": {
