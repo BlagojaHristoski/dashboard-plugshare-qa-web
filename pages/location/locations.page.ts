@@ -62,6 +62,7 @@ export class LocationsPage extends BasePage {
   get editButtonOnLocationDetailsScreen () { return '#location-edit-button' }
   get activeBroadcastButton () { return '//span[@class="broadcast-status active-broadcast ng-star-inserted"]' }
   get clearCurrentBroadcastButton () { return '#clear-broadcast-button' }
+  get broadcastToLocations () { return '#multi-broadcast-button' }
   // methods
   async navigateToLocations () {
     await I.amOnPage('/locations')
@@ -101,6 +102,11 @@ export class LocationsPage extends BasePage {
   async clickOnClearSearchButton () {
     await I.waitForElement(locationsPage.clearSearchButton, basePage.timeoutSec)
     await I.click(locationsPage.clearSearchButton)
+  }
+
+  async clickOnFirstCheckobxButton () {
+    await I.waitForElement(this.firstLocationCheckBox, this.timeoutSec)
+    await I.click(this.firstLocationCheckBox)
   }
 
   async validatePopUpForEmptyField (emptyField) {
@@ -214,6 +220,17 @@ export class LocationsPage extends BasePage {
       }
     }
     await I.click(this.submitBroadcastButton)
+  }
+  async selectAllLocations () {
+    const numberOfLOcations = await I.grabNumberOfVisibleElements(locationsPage.locationContainer)
+    for (let i=0; i < numberOfLOcations; i++){
+      await I.click(`#check-location-box-${i}`)
+    }
+  }
+
+  async verifyMultipleBroadcastPage () {
+    await I.waitForElement(this.broadcastToLocations, this.timeoutSec)
+    await I.see('Multiple Selection Mode')
   }
 }
 

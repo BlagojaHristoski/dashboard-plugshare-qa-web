@@ -128,7 +128,7 @@ Scenario('Has active broadcast checked returns active broadcast locations', asyn
 Scenario('Sort by location date created', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsPage.navigateToLocations()
-  await locationsSearchAndFiltersPage.sortByDateCreated()
+  await locationsSearchAndFiltersPage.sortByDateCreatedDescending()
 }).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607792')
 
 Scenario('Sort by location score', async ({ I }) => {
@@ -141,6 +141,31 @@ Scenario('Sort by location score', async ({ I }) => {
 Scenario('Sort by location name', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsPage.navigateToLocations()
-  await locationsPage.changeItemsPerPageTopDropDown(100)
   await locationsSearchAndFiltersPage.sortByName()
 }).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607794')
+
+Scenario('Sort by direction of results ascending', async ({ I }) => {
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
+  await locationsPage.navigateToLocations()
+  await locationsSearchAndFiltersPage.sortAscendingByDateCreated()
+}).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607795')
+
+Scenario('Sort by direction of results descending', async ({ I }) => {
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
+  await locationsPage.navigateToLocations()
+  await locationsSearchAndFiltersPage.sortByDateCreatedDescending()
+}).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607796')
+
+Scenario('Checkmarking a location redirects to the multiple broadcast page', async ({ I }) => {
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
+  await locationsPage.navigateToLocations()
+  await locationsPage.clickOnFirstCheckobxButton()
+  await locationsPage.verifyMultipleBroadcastPage()
+}).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607797')
+
+Scenario('Checkmarking all locations redirects to the multiple broadcast page', async ({ I }) => {
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
+  await locationsPage.navigateToLocations()
+  await locationsPage.selectAllLocations()
+  await locationsPage.verifyMultipleBroadcastPage()
+}).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607798')

@@ -9,6 +9,7 @@ export class LocationsSearchAndFiltersPage extends BasePage {
   get alreadySortByDateCreated () { return '//span[text()="Date Created"]' }
   get alreadySortByScore () { return '//span[text()="Score"]' } 
   get alreadySortByName () { return '//span[text()="Name"]' }
+  get alreadySortAscending () { return '//span[text()="Ascending"]' }
   get locationDateCreated () { return '#location-dated-created-0' }
   get locationScore () { return '#location-score-0' }
   // Methods
@@ -61,7 +62,7 @@ export class LocationsSearchAndFiltersPage extends BasePage {
     await I.click(locationsPage.searchAndApplyFiltersButton)
   }
 
-  async sortByDateCreated () {
+  async sortByDateCreatedDescending () {
     await I.waitForElement(locationsPage.sortByDropDown, this.timeoutSec)
     const alreadySortByDateCreated = await I.grabNumberOfVisibleElements(this.alreadySortByDateCreated)
 
@@ -75,8 +76,9 @@ export class LocationsSearchAndFiltersPage extends BasePage {
     for (let i=0; i < numberOfLOcations - 1; i++){
       const firstDate = await I.grabTextFrom(`#location-dated-created-${i}`)
       const secondDate = await I.grabTextFrom(`#location-dated-created-${i+1}`)
-
-      assert(firstDate < secondDate)
+      const firstDateParsed = Date.parse(firstDate)
+      const secondDateParsed = Date.parse(secondDate)
+      assert(firstDateParsed >= secondDateParsed)
     }
   }
 
@@ -134,6 +136,21 @@ export class LocationsSearchAndFiltersPage extends BasePage {
       console.log(locationNames)
       console.log(sortedDescendingNamesList)
       assert(locationNames === sortedDescendingNamesList)
+  }
+
+  async sortAscendingByDateCreated () {
+    await I.waitForElement(locationsPage.directionDropDown, this.timeoutSec)
+    await I.click(locationsPage.directionDropDown)
+    await I.click(locationsPage.directionAscendingOption)
+    await basePage.waitForProgressBar()
+    const numberOfLOcations = await I.grabNumberOfVisibleElements(locationsPage.locationContainer)
+    for (let i=0; i < numberOfLOcations - 1; i++){
+      const firstDate = await I.grabTextFrom(`#location-dated-created-${i}`)
+      const secondDate = await I.grabTextFrom(`#location-dated-created-${i+1}`)
+      const firstDateParsed = Date.parse(firstDate)
+      const secondDateParsed = Date.parse(secondDate)
+      assert(firstDateParsed <= secondDateParsed)
+    }
   }
 
 }
