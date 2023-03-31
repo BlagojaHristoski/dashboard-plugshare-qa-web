@@ -20,6 +20,7 @@ export class LocationsEditLocationPage extends BasePage {
   get updateAllButton () { return '#update-location-button-bottom' }
   get reportProblemDescribeField () { return '#report-problem-input' }
   get reportProblemButton () { return '#report-problem-button' }
+  get successfullyReportedButton () { return '//span[text()="Successfully Reported"]' }
   get googleLocationButton () { return '//a[@id="location-address"]' }
   get locationNameTitle () { return '//h1[@class="location-name ng-star-inserted"]' }
   get locationPhotos () { return '//img[@class="thumbnail"]' }
@@ -37,6 +38,7 @@ export class LocationsEditLocationPage extends BasePage {
   get groceryCheckbox () { return '//span[text()="Grocery"]' }
   get hikingCheckbox () { return '//span[text()="Hiking"]' }
   get campingCheckbox () { return '//span[text()="Camping"]' }
+  get addEntranceCoordinatesButton () { return '#location-add-entrance-coordinates-button' }
   // Locators - Parking Attributes
   get pullThroughParkingOption () { return '//span[text()="Pull through parking"]' }
   get pullInParkingOption () { return '//span[text()="Pull in parking"]' }
@@ -52,7 +54,8 @@ export class LocationsEditLocationPage extends BasePage {
   get openingDateDropDown () { return '//*[@id="location-opening-date-form-field"]//button[@aria-label="Open calendar"]' }
   get openedAtDropDown () { return '//*[@id="location-opened-at-form-field"]//button[@aria-label="Open calendar"]' }
   get openedAtEditButton () { return '//button[@id="location-opened-at-edit-button"]' }
-
+  get openingDateClearButton () { return '#location-opening-date-clear-button' }
+  get openedAtClearButton () { return '#location-opened-at-clear-button' }
   // Methods
   async googleLocationButtonClick () {
     await I.waitForElement(this.googleLocationButton, basePage.timeoutSec)
@@ -236,6 +239,78 @@ export class LocationsEditLocationPage extends BasePage {
 
       await I.click(openedAtDateLocator)
     }
+  }
+
+  async clearOpeningDate () {
+    await I.waitForElement(this.openingDateClearButton,  this.timeoutSec)
+    await I.click(this.openingDateClearButton)
+  }
+
+  async clearOpenedAt () {
+    await I.waitForElement(this.openedAtEditButton,  this.timeoutSec)
+    await I.click(this.openedAtEditButton)
+    await I.click(this.openedAtClearButton)
+  }
+
+  async editDescriptionPhoneHoursCost (description, phone, hours, costDescription) {
+    await I.waitForElement(locationsAddNewLocationPage.descriptionField,  this.timeoutSec)
+    await I.fillField(locationsAddNewLocationPage.descriptionField, description)
+    await I.fillField(locationsAddNewLocationPage.phoneField, phone)
+    await I.fillField(locationsAddNewLocationPage.hoursField, hours)
+    await I.fillField(locationsAddNewLocationPage.costDescriptionField, costDescription)
+    await this.updateAllButtonClick()
+  }
+
+  async addEntranceCoordinates (entranceLatitude, entranceLongitude) {
+    await I.waitForElement(locationsAddNewLocationPage.descriptionField,  this.timeoutSec)
+    const previoslyAddedEntranceCoordinates = await I.grabNumberOfVisibleElements(this.addEntranceCoordinatesButton)
+    if (previoslyAddedEntranceCoordinates) {
+      await I.click(this.addEntranceCoordinatesButton)
+    }
+    await I.waitForElement(locationsAddNewLocationPage.entranceLatitudeField, this.timeoutSec)
+    await I.fillField(locationsAddNewLocationPage.entranceLatitudeField, entranceLatitude)
+    await I.fillField(locationsAddNewLocationPage.entranceLongitudeField, entranceLongitude)
+    await this.updateAllButtonClick()
+  }
+
+  async addPOIName (option?) {
+    await I.waitForElement(locationsAddNewLocationPage.pOIDropDown, basePage.timeoutSec)
+    await I.click(locationsAddNewLocationPage.pOIDropDown)
+    switch (option) {
+      case 'Airport': {
+        await I.click(locationsAddNewLocationPage.pOIAirportOption)
+        break
+      }
+      case 'A/C Hall': {
+        await I.click(locationsAddNewLocationPage.pOIArenaConcertHallOption)
+        break
+      }
+      case 'Art Gallery': {
+        await I.click(locationsAddNewLocationPage.pOIArtGalleryOption)
+        break
+      }
+      case 'Bank': {
+        await I.click(locationsAddNewLocationPage.pOIBankOption)
+        break
+      }
+      case 'Campground': {
+        await I.click(locationsAddNewLocationPage.pOICampgroundOption)
+        break
+      }
+      default: {
+        await I.click('//span[text()="None"]')
+        break
+      }
+    }
+    await this.updateAllButtonClick()
+  }
+
+  async reportProblemEditPage (problemMessage) {
+    await I.waitForElement(this.reportProblemDescribeField, this.timeoutSec)
+    await I.fillField(this.reportProblemDescribeField, problemMessage)
+    await I.click(this.reportProblemButton)
+    await I.waitForText('Message Sent', this.timeoutSec)
+    await I.waitForElement(this.successfullyReportedButton, this.timeoutSec)
   }
 }
 

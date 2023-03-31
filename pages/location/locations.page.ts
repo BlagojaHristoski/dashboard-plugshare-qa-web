@@ -58,11 +58,12 @@ export class LocationsPage extends BasePage {
   get broadcastMessageInput () { return '#broadcast-message' }
   get broadcastDurationDropdown () { return '#broadcast-duration' }
   get cancelBroadcastButton () { return '#cancel-broadcast-button' }
+  get cancelMultipleBroadcastButton () { return '#multi-broadcast-cancel-button' }
   get submitBroadcastButton () { return '#submit-broadcast-button' }
   get editButtonOnLocationDetailsScreen () { return '#location-edit-button' }
   get activeBroadcastButton () { return '//span[@class="broadcast-status active-broadcast ng-star-inserted"]' }
   get clearCurrentBroadcastButton () { return '#clear-broadcast-button' }
-  get broadcastToLocations () { return '#multi-broadcast-button' }
+  get broadcastToLocationsButton () { return '#multi-broadcast-button' }
   // methods
   async navigateToLocations () {
     await I.amOnPage('/locations')
@@ -107,6 +108,16 @@ export class LocationsPage extends BasePage {
   async clickOnFirstCheckobxButton () {
     await I.waitForElement(this.firstLocationCheckBox, this.timeoutSec)
     await I.click(this.firstLocationCheckBox)
+  }
+
+  async clickOnCancelMultipleBroadcastButton () {
+    await I.waitForElement(this.cancelMultipleBroadcastButton, this.timeoutSec)
+    await I.click(this.cancelMultipleBroadcastButton)
+  }
+
+  async clickOnbroadcastToLocationsButton () {
+    await I.waitForElement(this.broadcastToLocationsButton, this.timeoutSec)
+    await I.click(this.broadcastToLocationsButton)
   }
 
   async validatePopUpForEmptyField (emptyField) {
@@ -221,6 +232,39 @@ export class LocationsPage extends BasePage {
     }
     await I.click(this.submitBroadcastButton)
   }
+
+  async addBroadcastForCheckedLocation (message, duration?) {
+    await locationsPage.clickOnFirstCheckobxButton()
+    await locationsPage.clickOnbroadcastToLocationsButton()
+    await I.waitForElement(this.broadcastMessageInput, basePage.timeoutSec)
+    await I.fillField(this.broadcastMessageInput, message)
+    await I.click(this.broadcastDurationDropdown)
+    switch (duration) {
+      case `${3} days`: {
+        await I.click(await this.getBroadcastDuration(3))
+        break
+      }
+      case `${1} week`: {
+        await I.click(await this.getBroadcastDuration(7))
+        break
+      }
+      case `${3} weeks`: {
+        await I.click(await this.getBroadcastDuration(21))
+        break
+      }
+      case `${6} months`: {
+        await I.click(await this.getBroadcastDuration(180))
+        break
+      }
+      default: {
+        await I.click(await this.getBroadcastDuration(1))
+
+        break
+      }
+    }
+    await I.click(this.submitBroadcastButton)
+  }
+
   async selectAllLocations () {
     const numberOfLOcations = await I.grabNumberOfVisibleElements(locationsPage.locationContainer)
     for (let i=0; i < numberOfLOcations; i++){
@@ -229,8 +273,9 @@ export class LocationsPage extends BasePage {
   }
 
   async verifyMultipleBroadcastPage () {
-    await I.waitForElement(this.broadcastToLocations, this.timeoutSec)
+    await I.waitForElement(this.broadcastToLocationsButton, this.timeoutSec)
     await I.see('Multiple Selection Mode')
+    await I.seeElement(this.cancelMultipleBroadcastButton)
   }
 }
 

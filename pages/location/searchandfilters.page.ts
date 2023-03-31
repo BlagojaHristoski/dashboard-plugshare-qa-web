@@ -133,8 +133,6 @@ export class LocationsSearchAndFiltersPage extends BasePage {
         locationNames.push(await I.grabTextFrom(`#location-plugshare-link-${i}`))
     }
     const sortedDescendingNamesList = locationNames.sort((one, two) => (one > two ? -1 : 1));
-      console.log(locationNames)
-      console.log(sortedDescendingNamesList)
       assert(locationNames === sortedDescendingNamesList)
   }
 
@@ -151,6 +149,16 @@ export class LocationsSearchAndFiltersPage extends BasePage {
       const secondDateParsed = Date.parse(secondDate)
       assert(firstDateParsed <= secondDateParsed)
     }
+  }
+
+  async selectNumberOfLocations (numberOfLOcations) {
+    let locationNames = new Array();
+    console.log(numberOfLOcations)
+    for (let i=0; i <= numberOfLOcations - 1; i++){
+      await I.click(`#check-location-box-${i}`)
+      locationNames.push(await I.grabTextFrom(`#location-plugshare-link-${i}`))
+    }
+    return locationNames
   }
 
 }

@@ -169,3 +169,68 @@ Scenario('Checkmarking all locations redirects to the multiple broadcast page', 
   await locationsPage.selectAllLocations()
   await locationsPage.verifyMultipleBroadcastPage()
 }).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607798')
+
+Scenario('Cancel buttons returns user to the locations page', async ({ I }) => {
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
+  await locationsPage.navigateToLocations()
+  await locationsPage.selectAllLocations()
+  await locationsPage.verifyMultipleBroadcastPage()
+  await locationsPage.clickOnCancelMultipleBroadcastButton()
+  await I.dontSeeElement(locationsPage.broadcastToLocationsButton)
+}).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607810')
+
+Scenario('Must set required fields to submit the form', async ({ I }) => {
+  const broadcast = 'New Broadcast from QA team'
+
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
+  await locationsPage.navigateToLocations()
+  await locationsPage.deleteActiveBroadcastIfExists()
+  await locationsPage.addBroadcast(broadcast)
+  await I.waitForElement(locationsPage.activeBroadcastButton, basePage.timeoutSec)
+}).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607800')
+
+Scenario('Clear current broadcast button clears a set broadcast from the LDV', async ({ I }) => {
+  const broadcast = 'New Broadcast from QA team'
+  
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
+  await locationsPage.navigateToLocations()
+  await locationsPage.deleteActiveBroadcastIfExists()
+  await locationsPage.addBroadcast(broadcast)
+  await locationsPage.removeBroadcast()
+  await I.dontSeeElement(locationsPage.activeBroadcastButton)
+}).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607802')
+
+Scenario('Cancel button dismisses the overlay', async ({ I }) => {
+  const broadcast = 'New Broadcast from QA team'
+  
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
+  await locationsPage.navigateToLocations()
+  await locationsPage.deleteActiveBroadcastIfExists()
+  await locationsPage.addBroadcast(broadcast)
+  await I.click(locationsPage.activeBroadcastButton)
+  await I.click(locationsPage.cancelBroadcastButton)
+  await I.seeElement(locationsPage.activeBroadcastButton)
+}).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607803')
+
+Scenario('Selected locations are listed', async ({ I }) => {
+  let numberOfLocations = 3
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
+  await locationsPage.navigateToLocations()
+  const locationNames = await locationsSearchAndFiltersPage.selectNumberOfLocations(numberOfLocations)
+  await locationsPage.clickOnbroadcastToLocationsButton()
+  for (let i=0; i <= numberOfLocations - 1; i++){
+    await I.see(locationNames[i])
+  }
+}).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607804')
+
+Scenario('Broadcast cleared from LDV after set duration', async ({ I }) => {
+  const broadcast = 'New Broadcast from QA team'
+  
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
+  await locationsPage.navigateToLocations()
+  await locationsPage.deleteActiveBroadcastIfExists()
+  await locationsPage.addBroadcast(broadcast, '1 week')
+  await locationsPage.removeBroadcast()
+  await I.see('Broadcast cleared')
+  await I.dontSeeElement(locationsPage.activeBroadcastButton)
+}).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607806')

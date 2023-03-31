@@ -4,6 +4,9 @@ import assert = require('assert')
 import { locationsHistoryPage } from '../../pages/location/locations.history.pages'
 import { locationsActivityPage } from '../../pages/location/locations.activity.page'
 import { locationsEditLocationPage } from '../../pages/location/locations.editlocation.page'
+import { locationsSearchAndFiltersPage } from '../../pages/location/searchandfilters.page'
+import * as location from '../../lib/data/location.json'
+const locationName = location.edit_location.location.locationName
 
 Feature('Locations Entries Tests')
 Before(async () => {
@@ -223,3 +226,15 @@ Scenario('Verify that user is able to "Clear Current Broadcast"', async ({ I }) 
   await locationsPage.removeBroadcast()
   await I.dontSeeElement(locationsPage.activeBroadcastButton)
 }).tag('@dashboard').tag('@LocationsEntriesTests').tag('@C610406')
+
+Scenario('Verify that user is able to report problem from edit location', async ({ I }) => {
+  const problem = 'Report Activity from QA team'
+
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
+  await locationsPage.navigateToLocations()
+  await locationsSearchAndFiltersPage.searchLocationByName(locationName)
+  await locationsPage.clickOnFirstEditButton()
+  await I.switchToNextTab()
+  await basePage.waitForProgressBar()
+  await locationsEditLocationPage.reportProblemEditPage(problem)
+}).tag('@dashboard').tag('@LocationsEntriesTests').tag('@C610008')

@@ -7,6 +7,12 @@ import assert = require('assert')
 import { locationsAddNewLocationPage } from '../../pages/location/locations.addnewlocation.page'
 const locationName = location.edit_location.location.locationName
 const locationAddress = location.edit_location.location.address
+const locationDescription = location.add_new_location.locationDescription
+const costDescription = location.add_new_location.locationCostDescription
+const locationPhone = location.add_new_location.locationPhone
+const locationHours = location.add_new_location.locationHours
+const locationEntranceLatitude = location.add_new_location.locationEntranceLatitude
+const locationEntranceLongtitude = location.add_new_location.locationEntranceLongtitude
 
 Feature('Locations Tests')
 Before(async () => {
@@ -169,3 +175,70 @@ Scenario('Verify that user is able to set "Opening Date" and "Opened At"', async
   await basePage.waitForProgressBar()
   await I.see('Location and its associated stations and plugs successfully updated')
 }).tag('@dashboard').tag('@C610009')
+
+Scenario('Verify that user is able to clear "Opening Date" and "Opened At"', async ({ I }) => {
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
+  await locationsPage.navigateToLocations()
+  await locationsSearchAndFiltersPage.searchLocationByName(locationName)
+  await locationsPage.clickOnFirstEditButton()
+  await I.switchToNextTab()
+  await basePage.waitForProgressBar()
+  const previouslyAddedOpenedAtDate = await I.grabNumberOfVisibleElements(locationsEditLocationPage.openedAtEditButton)
+  if (previouslyAddedOpenedAtDate) {
+    await locationsEditLocationPage.selectOpeningDate()
+    await locationsEditLocationPage.selectOpenedAtDate()
+    await locationsEditLocationPage.updateAllButtonClick()
+  }
+  await basePage.waitForProgressBar()
+  await locationsEditLocationPage.clearOpeningDate()
+  await locationsEditLocationPage.clearOpenedAt()
+}).tag('@dashboard').tag('@C610010')
+
+Scenario('Verify that user is able to edit Description, Phone, Hours and Cost Description', async ({ I }) => {
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
+  await locationsPage.navigateToLocations()
+  await locationsSearchAndFiltersPage.searchLocationByName(locationName)
+  await locationsPage.clickOnFirstEditButton()
+  await I.switchToNextTab()
+  await basePage.waitForProgressBar()
+  await locationsEditLocationPage.editDescriptionPhoneHoursCost(locationDescription, locationPhone, locationHours, costDescription)
+  await I.waitForText('Location and its associated stations and plugs successfully updated', basePage.timeoutSec)
+  
+}).tag('@dashboard').tag('@C610001')
+
+Scenario('Verify that user is able to add entrance coordinates', async ({ I }) => {
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
+  await locationsPage.navigateToLocations()
+  await locationsSearchAndFiltersPage.searchLocationByName(locationName)
+  await locationsPage.clickOnFirstEditButton()
+  await I.switchToNextTab()
+  await basePage.waitForProgressBar()
+  await locationsEditLocationPage.addEntranceCoordinates(locationEntranceLatitude, locationEntranceLongtitude)
+  await I.waitForText('Location and its associated stations and plugs successfully updated', basePage.timeoutSec)
+  
+}).tag('@dashboard').tag('@C650809')
+
+Scenario('Verify that user is able to choose "POI Name"', async ({ I }) => {
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
+  await locationsPage.navigateToLocations()
+  await locationsSearchAndFiltersPage.searchLocationByName(locationName)
+  await locationsPage.clickOnFirstEditButton()
+  await I.switchToNextTab()
+  await basePage.waitForProgressBar()
+  await locationsEditLocationPage.addPOIName('Airport')
+  await I.waitForText('Location and its associated stations and plugs successfully updated', basePage.timeoutSec)
+  
+}).tag('@dashboard').tag('@C657626')
+
+Scenario('Verify that alert is displayed when user reloads page with unsaved changes in "Edit Location" page', async ({ I }) => {
+  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
+  await locationsPage.navigateToLocations()
+  await locationsSearchAndFiltersPage.searchLocationByName(locationName)
+  await locationsPage.clickOnFirstEditButton()
+  await I.switchToNextTab()
+  await basePage.waitForProgressBar()
+  await I.waitForElement(locationsAddNewLocationPage.entranceLongitudeField, basePage.timeoutSec)
+  await I.fillField(locationsAddNewLocationPage.entranceLongitudeField, locationEntranceLongtitude)
+  await locationsPage.locationsButtonClick()
+  await I.checkTextInPopUp('WARNING: You have unsaved changes. Press Cancel to go back and save these changes, or OK to lose these changes.')
+}).tag('@dashboard').tag('@LocationsTests').tag('@C669135')
