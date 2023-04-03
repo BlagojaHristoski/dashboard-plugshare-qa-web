@@ -2,7 +2,7 @@ import { basePage } from '../../pages/base.page'
 import { locationsPage } from '../../pages/location/locations.page'
 import { activityFiltersPage } from '../../pages/activity/activity.filters.page'
 
-Feature('Locations Entries Tests')
+Feature('Activity Filters Tests')
 Before(async () => {
   await basePage.navigateToDashboard()
   await basePage.signInDashboard()

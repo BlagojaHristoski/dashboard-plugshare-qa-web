@@ -6,7 +6,6 @@ const { I } = inject()
 
 export class ActivityFiltersPage extends BasePage {
   // locators
- 
 
   // methods
 
