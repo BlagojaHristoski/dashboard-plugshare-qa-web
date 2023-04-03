@@ -29,6 +29,10 @@ export class LocationsActivityPage extends BasePage {
   get submitButtonSendMessagePopUp () { return '#submit-message-button' }
   get cancelButtonReportActivityPopUp () { return '#report-cancel-button' }
   get submitButtonReportActivityPopUp () { return '#report-submit-button' }
+  get addressFields () { return '//a[contains(@id, "activity-address-")]' }
+  get usernameFields () { return '//span[contains(@id, "activity-username-")]' }
+  get commentsOnActivityPage () { return '//div[contains(@id, "activity-comment-")]' }
+  get activityDateAndTime () { return '//div[contains(@id, "activity-happened-at-")]' }
 
   // Methods
   async clickOnfirstLocationAddressButton () {
@@ -44,6 +48,11 @@ export class LocationsActivityPage extends BasePage {
   async clickOnFirstPrivatelyMessageUserButton () {
     await I.waitForElement(this.firstPrivatelyMessageUserButton, this.timeoutSec)
     await I.click(this.firstPrivatelyMessageUserButton)
+  }
+
+  async clickOnApplyFiltersButton () {
+    await I.waitForElement(this.applyFiltersButton, this.timeoutSec)
+    await I.click(this.applyFiltersButton)
   }
 
   async validateActivityPage () {

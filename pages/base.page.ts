@@ -25,6 +25,10 @@ export class BasePage {
     await I.amOnPage('/locations')
   }
 
+  async navigateToActivity () {
+    await I.amOnPage('/activities')
+  }
+
   async getText (text) {
     return `//a[text()="${text}"]`
   }
@@ -42,6 +46,24 @@ export class BasePage {
 
   async waitForProgressBar () {
     await I.waitForInvisible(this.progressBar, this.timeoutSec)
+  }
+
+  async selectCheckbox (checkbox) {
+        const elementVisible = await I.grabAttributeFrom(checkbox, 'ng-reflect-model')
+
+        if (elementVisible === 'false') {
+          await I.waitForElement(checkbox, this.timeoutSec)
+          await I.click(checkbox)
+       }
+  }
+
+  async unSelectCheckbox (checkbox) {
+    const elementVisible = await I.grabAttributeFrom(checkbox, 'ng-reflect-model')
+
+    if (elementVisible === 'true') {
+      await I.waitForElement(checkbox, this.timeoutSec)
+      await I.click(checkbox)
+   }
   }
 }
 

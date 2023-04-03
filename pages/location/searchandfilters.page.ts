@@ -66,7 +66,7 @@ export class LocationsSearchAndFiltersPage extends BasePage {
     await I.waitForElement(locationsPage.sortByDropDown, this.timeoutSec)
     const alreadySortByDateCreated = await I.grabNumberOfVisibleElements(this.alreadySortByDateCreated)
 
-    if(alreadySortByDateCreated){
+    if(!alreadySortByDateCreated){
       await I.waitForElement(locationsPage.sortByDropDown, this.timeoutSec)
       await I.click(locationsPage.sortByDropDown)
       await I.click(locationsPage.sortByDateCreatedOption)
