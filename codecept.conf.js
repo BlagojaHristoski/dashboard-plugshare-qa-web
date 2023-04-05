@@ -35,9 +35,6 @@ console.info('SCREENSHOT_SUBFOLDER', SCREENSHOT_SUBFOLDER)
 
 exports.config = {
   helpers: {
-    ChaiWrapper: {
-      require: 'codeceptjs-chai',
-    },
     FileSystem: {},
     Playwright: {
       browser: BROWSER_TYPE,

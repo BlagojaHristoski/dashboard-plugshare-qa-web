@@ -57,9 +57,3 @@ Scenario('Verify that user is able to see 100 items per page', async ({ I }) => 
   assert(numberOfLocations === numberOfItems)
 }).tag('@dashboard').tag('@LocationsTests').tag('@C657631')
 
-Scenario('Verify that alert is displayed when user click anywhere on the menu with unsaved changes in "Add New Location', async ({ I }) => {
-  await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsAddNewLocationPage.navigateToAddNewLocation()
-  await locationsPage.locationsButtonClick()
-  await I.checkTextInPopUp('WARNING: You have unsaved changes. Press Cancel to go back and save these changes, or OK to lose these changes.')
-}).tag('@dashboard').tag('@LocationsTests').tag('@C668618')

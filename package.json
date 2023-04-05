@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
+    "cleanw": "del /q output",
     "clean": "rm -rf ./output",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
@@ -16,12 +17,16 @@
     "test:locations": "codeceptjs run ./tests/locations/locations.test.ts --verbose --override",
     "test:locations:entries": "codeceptjs run ./tests/locations/locations.entries.test.ts --verbose --override",
     "test:locations:details": "codeceptjs run ./tests/locations/locations.details.test.ts --verbose --override",
-    "test:searchandfilters": "codeceptjs run ./tests/locations/searchandfilters.test.ts --verbose --override"
+    "test:searchandfilters": "codeceptjs run ./tests/locations/searchandfilters.test.ts --verbose --override",
+    "test:activityfilters": "codeceptjs run ./tests/activity/activity.filters.test.ts --verbose --override",
+    "test:activitylocations": "codeceptjs run ./tests/activity/activity.locations.test.ts --verbose --override",
+    "test:activitysettings": "codeceptjs run ./tests/activity/activity.settings.test.ts --verbose --override",
+    "test:footer": "codeceptjs run ./tests/footer.test.ts --verbose --override"
   },
   "dependencies": {
     "@codeceptjs/mailslurp-helper": "^1.0.7",
     "codeceptjs": "^3.4.1",
-    "codeceptjs-chai": "^2.3.4",
+    "codeceptjs-chai": "^2.3.5",
     "cspell": "^6.31.1",
     "dotenv": "^16.0.3",
     "eslint": "^8.37.0",
