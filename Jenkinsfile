@@ -19,13 +19,15 @@ pipeline {
         }
         stage('Report'){
             post {                
-                success { allure([
-                    includeProperties: false,
-                    jdk: '',
-                    properties: [],
-                    reportBuildPolicy: 'ALWAYS',
-                    results: [[path: 'target/allure-results']]
-                ])
+                success {
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: 'target/allure-results']]
+                    ])
+                }
             }
         }
     }
