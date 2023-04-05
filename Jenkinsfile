@@ -15,8 +15,6 @@ pipeline {
                 echo "Starting tests on ${BASE_URL}"
                 bat 'npm i --force'
                 bat 'npm run test C607680'
-            }
-            steps {
                 bat "mvn -D clean test"
             }
             post {                
