@@ -16,6 +16,16 @@ pipeline {
                 bat 'npm i --force'
                 bat 'npm run test C607680'
             }
+            post {                
+                success { allure([
+                    includeProperties: false,
+                    jdk: '',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'target/allure-results']]
+                ])
+            }
+         }
         }
     }
 }
