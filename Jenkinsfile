@@ -16,6 +16,8 @@ pipeline {
                 bat 'npm i --force'
                 bat 'npm run test C607680'
             }
+        }
+        stage('Report'){
             post {                
                 success { allure([
                     includeProperties: false,
@@ -25,7 +27,6 @@ pipeline {
                     results: [[path: 'target/allure-results']]
                 ])
             }
-         }
         }
     }
 }
