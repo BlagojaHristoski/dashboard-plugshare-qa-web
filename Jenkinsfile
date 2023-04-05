@@ -13,7 +13,7 @@ pipeline {
         stage('Execute') {
             steps {
                 echo "Starting tests on ${BASE_URL}"
-                sh 'npm run test:home'
+                bat 'npm run test:home'
             }
         }
     }
