@@ -2,6 +2,7 @@ import { assert } from "console"
 
 const email = process.env.DASHBOARD_EMAIL || 'email_missing'
 const password = process.env.DASHBOARD_PASSWORD || 'password_missing'
+const URL = process.env.BASE_URL
 const { I } = inject()
 
 export class BasePage {
@@ -24,19 +25,19 @@ export class BasePage {
 
   // methods
   async navigateToDashboard () {
-    await I.amOnPage('/')
+    await I.amOnPage(`${URL}/`)
   }
 
   async navigateToLocations () {
-    await I.amOnPage('/locations')
+    await I.amOnPage(`${URL}/locations`)
   }
 
   async navigateToActivity () {
-    await I.amOnPage('/activities')
+    await I.amOnPage(`${URL}//activities`)
   }
 
   async navigateToSettings () {
-    await I.amOnPage('/settings')
+    await I.amOnPage(`${URL}//settings`)
   }
 
   async getText (text) {
