@@ -4,7 +4,7 @@ pipeline {
     }
 
     environment {
-        BASE_URL = 'https=//dashboard-staging.plugshare.com/'
+        BASE_URL = 'https://dashboard-staging.plugshare.com/'
         DASHBOARD_EMAIL = 'blagoja.hristoski@contractor.evgo.com'
         DASHBOARD_PASSWORD = '075246655aA@'
     }
