@@ -21,6 +21,6 @@ Scenario('Verify that user is able to Logout from PlugShare Dashboard', async ({
 Scenario('Verify that user is correctly navigated to Style guide page', async ({ I }) => {
   await basePage.signInDashboard()
   await homePage.styleGuideButtonClick()
-  await I.switchToNextTab(1)
-  await I.waitInUrl('dashboard-staging.plugshare.com/assets/data_entry_style_guide_for_plugshare_dashboard', basePage.timeoutSec)
+  await I.switchToNextTab(2)
+  await I.waitInUrl('dashboard-staging.plugshare.com/assets/data_entry_style_guide_for_plugshare_dashboard', 10)
 }).tag('@dashboard').tag('@HomeTests').tag('@C607680')
