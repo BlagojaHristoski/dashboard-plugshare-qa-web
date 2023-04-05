@@ -16,6 +16,9 @@ pipeline {
                 bat 'npm i --force'
                 bat 'npm run test C607680'
             }
+            steps {
+                bat "mvn -D clean test"
+            }
             post {                
                 success {
                     allure([
