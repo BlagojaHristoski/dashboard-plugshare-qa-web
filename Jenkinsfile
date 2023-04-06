@@ -20,11 +20,10 @@ pipeline {
             }
             post {                
                 always{
-                    mail to: "${recipientEmails}",
-                    attachmentsPattern: './output/mochawesome.html', 
-                    body: 'Test', 
-                    subject: "Results from tests from PlugShare Dashboard", 
-                    mimeType: 'text/html',
+                    emailext to: "${recipientEmails}",
+                    subject: "Results from tests from PlugShare Dashboard",
+                    body: "Test",
+                    attachmentsPattern: '*.csv'
                     }
                 }
             }
