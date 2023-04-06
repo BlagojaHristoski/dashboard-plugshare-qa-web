@@ -55,7 +55,11 @@ exports.config = {
      * loginPage: './pages/login/login.page.ts',
      */
   },
-  mocha: {},
+  mocha: {
+    "reporterOptions": {
+      "reportDir": "output"
+    }
+  },
   output: './output',
   plugins: {
     allure: {
