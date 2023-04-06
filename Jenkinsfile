@@ -21,7 +21,8 @@ pipeline {
             post {                
                 always{
                     mail to: "${recipientEmails}",
-                    emailext attachmentsPattern: './output/mochawesome.html', body: 'Test', 
+                    attachmentsPattern: './output/mochawesome.html', 
+                    body: 'Test', 
                     subject: "Results from tests from PlugShare Dashboard", 
                     mimeType: 'text/html',
                     }
