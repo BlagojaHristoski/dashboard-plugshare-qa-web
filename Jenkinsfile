@@ -23,7 +23,7 @@ pipeline {
                     mail to: "${recipientEmails}",
                     subject: "Results from tests from PlugShare Dashboard",
                     body: "Test"
-                    attachmentsPattern: '*.html', 'output/*.png'
+                    attachmentsPattern: '*.html', '*.png'
                     }
                 }
             }
