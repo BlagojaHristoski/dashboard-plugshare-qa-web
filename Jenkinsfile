@@ -20,11 +20,11 @@ pipeline {
             }
             post {                
                 always{
-                    archiveArtifacts artifacts: '*.html'
+                    attachLog: true,
                     mail to: "${recipientEmails}",
                     subject: "Results from tests from PlugShare Dashboard",
                     body: "Test"
-                    attachmentsPattern: '*.html', '*.png'
+                    attachmentsPattern: './output/mochawesome.html'
                     }
                 }
             }
