@@ -7,6 +7,7 @@ pipeline {
         BASE_URL = 'https://dashboard-staging.plugshare.com/'
         DASHBOARD_EMAIL = 'blagoja.hristoski@contractor.evgo.com'
         DASHBOARD_PASSWORD = '075246655aA@'
+        recipientEmails = "blagoja.hristoski@iwconnect.com"
     }
 
     stages {
@@ -19,9 +20,10 @@ pipeline {
             }
             post {                
                 always{
-                    mail to: "blagoja.hristoski@iwconnect.com",
-                    subject: "Results from run",
+                    mail to: "${recipientEmails}",
+                    subject: "Results from tests from PlugShare Dashboard",
                     body: "Test"
+                    attachLog: true
                     }
                 }
             }
