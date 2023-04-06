@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "cleanw": "del /q output",
+    "clean:windows": "del /q output",
     "clean": "rm -rf ./output",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
