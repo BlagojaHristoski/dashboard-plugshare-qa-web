@@ -14,20 +14,16 @@ pipeline {
             steps {
                 echo "Starting tests on ${BASE_URL}"
                 bat 'npm i --force'
+                bat 'npm run cleanw'
                 bat 'npm run test C607680'
-                bat "mvn -D clean test"
             }
             post {                
-                success {
-                    allure([
-                        includeProperties: false,
-                        jdk: '',
-                        properties: [],
-                        reportBuildPolicy: 'ALWAYS',
-                        results: [[path: 'target/allure-results']]
-                    ])
+                always{
+                    mail to: "blagoja.hristoski@iwconnect.com",
+                    subject: "Results from run",
+                    body: "Test"
+                    }
                 }
             }
         }
     }
-}
