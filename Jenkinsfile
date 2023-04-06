@@ -23,7 +23,6 @@ pipeline {
                     emailext to: "${recipientEmails}",
                     subject: "Results from tests from PlugShare Dashboard",
                     body: "Test",
-                    attachmentsPattern: '*.json'
                     }
                 }
             }
