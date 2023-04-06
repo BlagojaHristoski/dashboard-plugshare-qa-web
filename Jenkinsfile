@@ -20,6 +20,7 @@ pipeline {
             }
             post {                
                 always{
+                    archiveArtifacts artifacts: '*.html'
                     mail to: "${recipientEmails}",
                     subject: "Results from tests from PlugShare Dashboard",
                     body: "Test"
