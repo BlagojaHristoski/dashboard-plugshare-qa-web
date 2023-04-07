@@ -20,7 +20,7 @@ pipeline {
             }
             post {                
                 always{
-                    emailext to: "${recipientEmails}",
+                    mail to: "${recipientEmails}",
                     subject: "Results from tests from PlugShare Dashboard",
                     body: "Test",
                     attachmentsPattern: 'http://localhost:8080/job/Dashboard%20PlugShare/ws/jenkinsresults/mochawesome.html'
