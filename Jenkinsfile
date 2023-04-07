@@ -15,7 +15,7 @@ pipeline {
             steps {
                 echo "Starting tests on ${BASE_URL}"
                 bat 'npm i --force'
-                bat 'npm run clean:windows'
+                bat 'npm run clean:jenkins'
                 bat 'npm run testjenkins:home'
             }
             post {                
