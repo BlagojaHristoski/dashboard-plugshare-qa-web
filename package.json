@@ -14,7 +14,7 @@
     "test": "codeceptjs run --verbose --grep",
     "test:all": "codeceptjs run --verbose ",
     "test:tagged": "./run-tagged-tests.sh",
-    "test:home": "codeceptjs run ./tests/home/home.test.ts --verbose --override --reporter mochawesome",
+    "test:home": "codeceptjs run ./tests/home/home.test.ts --verbose --override --reporter mocha-junit-reporter",
     "test:locations": "codeceptjs run ./tests/locations/locations.test.ts --verbose --override --reporter mocha-junit-reporter",
     "test:locations:entries": "codeceptjs run ./tests/locations/locations.entries.test.ts --verbose --override --reporter mocha-junit-reporter",
     "test:locations:details": "codeceptjs run ./tests/locations/locations.details.test.ts --verbose --override --reporter mocha-junit-reporter",
