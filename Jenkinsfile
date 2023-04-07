@@ -7,7 +7,7 @@ pipeline {
         BASE_URL = 'https://dashboard-staging.plugshare.com/'
         DASHBOARD_EMAIL = 'blagoja.hristoski@contractor.evgo.com'
         DASHBOARD_PASSWORD = '075246655aA@'
-        recipientEmails = "blagoja.hristoski@iwconnect.com"
+        recipientEmails = "blagoja.hristoski@contractor.evgo.com"
     }
 
     stages {
@@ -20,7 +20,7 @@ pipeline {
             }
             post {                
                 always{
-                archiveArtifacts artifacts: 'http://localhost:8080/job/Dashboard%20PlugShare/ws/jenkinsresults/mochawesome.html', onlyIfSuccessful: true
+                archiveArtifacts artifacts: 'http://localhost:8080/job/Dashboard%20PlugShare/ws/jenkinsresults/mochawesome.html', onlyIfSuccessful: false
                 
                 emailext to: "${recipientEmails}",
                 subject: "Test Email",
