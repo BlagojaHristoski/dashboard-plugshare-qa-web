@@ -22,12 +22,10 @@ pipeline {
                 always{
                 archiveArtifacts artifacts: 'http://localhost:8080/job/Dashboard%20PlugShare/ws/jenkinsresults/mochawesome.html', onlyIfSuccessful: false
                 
-                emailext to: "${recipientEmails}",
+                mail to: "${recipientEmails}",
                 subject: "Test Email",
                 body: "Test",
                 attachmentsPattern: 'http://localhost:8080/job/Dashboard%20PlugShare/ws/jenkinsresults/mochawesome.html'
-                
-            cleanWs()
             }
                 }
             }
