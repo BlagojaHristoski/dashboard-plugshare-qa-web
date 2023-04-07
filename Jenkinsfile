@@ -20,12 +20,7 @@ pipeline {
             }
             post {                
                 always{
-                archiveArtifacts artifacts: 'http://localhost:8080/job/Dashboard%20PlugShare/ws/jenkinsresults/mochawesome.html', onlyIfSuccessful: false
-                
-                mail to: "${recipientEmails}",
-                subject: "Test Email",
-                body: "Test",
-                attachmentsPattern: 'http://localhost:8080/job/Dashboard%20PlugShare/ws/jenkinsresults/mochawesome.html'
+                emailext attachmentsPattern: '**/mochawesome.html', body: 'Find attachments', subject: 'test', to: 'test@me.org'
             }
                 }
             }
