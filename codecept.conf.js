@@ -57,7 +57,7 @@ exports.config = {
   },
   mocha: {
     "reporterOptions": {
-      "reportDir": "jenkinsresults"
+      "mochaFile": "jenkinsresults/result.xml"
     }
   },
   output: './output',
