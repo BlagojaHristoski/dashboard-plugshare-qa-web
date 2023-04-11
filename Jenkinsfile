@@ -20,9 +20,9 @@ pipeline {
             }
             post {                
                 always{
-                    emailext body: 'Find attachments', 
-                    subject: "test", 
-                    mimeType: 'text/html',to: "blagoja.hristoski@iwconnect.com"
+                    mail to: "blagoja.hristoski@iwconnect.com",
+                    subject: "Test Email",
+                    body: "Test"
             }
                 }
             }
