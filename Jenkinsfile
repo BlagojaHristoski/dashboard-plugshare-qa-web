@@ -20,7 +20,9 @@ pipeline {
             }
             post {                
                 always{
-                emailext body: 'Find attachments', subject: 'test', to: 'blagoja.hristoski@iwconnect.com'
+                     emailext attachmentsPattern: 'jenkinsresults/mo', body: 'Find attachments', 
+                    subject: "test", 
+                    mimeType: 'text/html',to: "blagoja.hristoski@iwconnect.com"
             }
                 }
             }
