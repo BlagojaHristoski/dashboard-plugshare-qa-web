@@ -20,7 +20,7 @@ pipeline {
             }
             post {                
                 always{
-                emailext attachmentsPattern: '**/mochawesome.html', body: 'Find attachments', subject: 'test', to: 'blagoja.hristoski@iwconnect.com'
+                emailext attachmentsPattern: '**/mochawesome.xml', body: 'Find attachments', subject: 'test', to: 'blagoja.hristoski@iwconnect.com'
             }
                 }
             }
