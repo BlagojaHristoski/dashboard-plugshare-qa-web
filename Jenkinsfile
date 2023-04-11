@@ -20,7 +20,7 @@ pipeline {
             }
             post {                
                 always{
-                     emailext attachmentsPattern: 'jenkinsresults/result.xml', body: 'Find attachments', 
+                    emailext attachmentsPattern: 'jenkinsresults/result.xml', body: 'Find attachments', 
                     subject: "test", 
                     mimeType: 'text/html',to: "blagoja.hristoski@iwconnect.com"
             }
