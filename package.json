@@ -21,7 +21,7 @@
     "test:activityfilters": "codeceptjs run ./tests/activity/activity.filters.test.ts --verbose --override",
     "test:activitylocations": "codeceptjs run ./tests/activity/activity.locations.test.ts --verbose --override",
     "test:activitysettings": "codeceptjs run ./tests/activity/activity.settings.test.ts --verbose --override",
-    "test:footer": "codeceptjs run ./tests/footer.test.ts --verbose --override",
+    "test:footer": "codeceptjs run ./tests/footer.test.ts --verbose --override"
   },
   "dependencies": {
     "@codeceptjs/mailslurp-helper": "^1.0.7",
