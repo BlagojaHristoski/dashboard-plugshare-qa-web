@@ -1,9 +1,14 @@
-import { basePage } from '../../pages/base.page'
-import { locationsPage } from '../../pages/location/locations.page'
-import assert = require('assert')
-import { locationsSearchAndFiltersPage } from '../../pages/location/searchandfilters.page'
 import * as location from '../../lib/data/location.json'
+
+import { basePage } from '../../pages/base.page'
 import { locationsEditLocationPage } from '../../pages/location/locations.editlocation.page'
+import { locationsPage } from '../../pages/location/locations.page'
+import { locationsSearchAndFiltersPage } from '../../pages/location/searchandfilters.page'
+
+import assert = require('assert')
+
+
+
 const locationName = location.search_location.locationName.location
 const locationAddress = location.search_location.locationName.addressName
 const locationState = location.search_location.locationName.state
@@ -99,9 +104,9 @@ Scenario('Coming soon checked returns coming soon locations', async ({ I }) => {
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
   await I.waitForElement(locationsEditLocationPage.comingSoonCheckbox, basePage.timeoutSec)
-  const commingSoon = await I.grabAttributeFrom(locationsEditLocationPage.comingSoonCheckbox, 'ng-reflect-model')
+  const comingSoon = await I.grabAttributeFrom(locationsEditLocationPage.comingSoonCheckbox, 'ng-reflect-model')
 
-  assert(commingSoon)
+  assert(comingSoon)
 }).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607789')
 
 Scenario('Under repair checked returns under repair locations', async ({ I }) => {
@@ -156,14 +161,14 @@ Scenario('Sort by direction of results descending', async ({ I }) => {
   await locationsSearchAndFiltersPage.sortByDateCreatedDescending()
 }).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607796')
 
-Scenario('Checkmarking a location redirects to the multiple broadcast page', async ({ I }) => {
+Scenario('Check marking a location redirects to the multiple broadcast page', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsPage.navigateToLocations()
-  await locationsPage.clickOnFirstCheckobxButton()
+  await locationsPage.clickOnFirstCheckboxButton()
   await locationsPage.verifyMultipleBroadcastPage()
 }).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607797')
 
-Scenario('Checkmarking all locations redirects to the multiple broadcast page', async ({ I }) => {
+Scenario('Check marking all locations redirects to the multiple broadcast page', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsPage.navigateToLocations()
   await locationsPage.selectAllLocations()
@@ -217,7 +222,7 @@ Scenario('Selected locations are listed', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsPage.navigateToLocations()
   const locationNames = await locationsSearchAndFiltersPage.selectNumberOfLocations(numberOfLocations)
-  await locationsPage.clickOnbroadcastToLocationsButton()
+  await locationsPage.clickOnBroadcastToLocationsButton()
   for (let i=0; i <= numberOfLocations - 1; i++){
     await I.see(locationNames[i])
   }

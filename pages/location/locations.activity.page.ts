@@ -1,4 +1,5 @@
 import { BasePage, basePage } from '../base.page'
+
 import assert = require('assert')
 const { I } = inject()
 
@@ -35,7 +36,7 @@ export class LocationsActivityPage extends BasePage {
   get activityDateAndTime () { return '//div[contains(@id, "activity-happened-at-")]' }
 
   // Methods
-  async clickOnfirstLocationAddressButton () {
+  async clickOnFirstLocationAddressButton () {
     await I.waitForElement(this.firstLocationAddressButton, this.timeoutSec)
     await I.click(this.firstLocationAddressButton)
   }

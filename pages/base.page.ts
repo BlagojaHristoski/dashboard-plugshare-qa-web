@@ -77,13 +77,13 @@ export class BasePage {
    }
   }
 
-  async validateSelectedCheckbox (checbox) {
-    const elementVisible = await I.grabAttributeFrom(checbox, 'ng-reflect-model')
+  async validateSelectedCheckbox (checkbox) {
+    const elementVisible = await I.grabAttributeFrom(checkbox, 'ng-reflect-model')
     assert(elementVisible === 'true')
   }
 
-  async validateUnselectedCheckbox (checbox) {
-    const elementVisible = await I.grabAttributeFrom(checbox, 'ng-reflect-model')
+  async validateUnselectedCheckbox (checkbox) {
+    const elementVisible = await I.grabAttributeFrom(checkbox, 'ng-reflect-model')
     assert(elementVisible === 'false')
   }
 

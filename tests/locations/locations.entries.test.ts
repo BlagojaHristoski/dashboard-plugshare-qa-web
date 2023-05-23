@@ -1,11 +1,18 @@
+import * as location from '../../lib/data/location.json'
+
 import { basePage } from '../../pages/base.page'
-import { locationsPage } from '../../pages/location/locations.page'
-import assert = require('assert')
-import { locationsHistoryPage } from '../../pages/location/locations.history.pages'
 import { locationsActivityPage } from '../../pages/location/locations.activity.page'
 import { locationsEditLocationPage } from '../../pages/location/locations.editlocation.page'
+import { locationsHistoryPage } from '../../pages/location/locations.history.pages'
+import { locationsPage } from '../../pages/location/locations.page'
 import { locationsSearchAndFiltersPage } from '../../pages/location/searchandfilters.page'
-import * as location from '../../lib/data/location.json'
+
+import assert = require('assert')
+
+
+
+
+
 const locationName = location.edit_location.location.locationName
 
 Feature('Locations Entries Tests')
@@ -96,7 +103,7 @@ Scenario('Edit button navigates to Location Edit page', async ({ I }) => {
   await locationsPage.navigateToLocations()
   await locationsPage.firstEnabledHistoryButtonClick()
   await I.switchToNextTab()
-  await locationsPage.clickOneditButtonOnLocationDetailsScreen()
+  await locationsPage.clickOnEditButtonOnLocationDetailsScreen()
   await locationsEditLocationPage.validateEditLocationPage()
 }).tag('@dashboard').tag('@LocationsEntriesTests').tag('@C609646')
 
@@ -105,7 +112,7 @@ Scenario('Location address links to google maps', async ({ I }) => {
   await locationsPage.navigateToLocations()
   await locationsPage.clickOnFirstReviewsButton()
   await basePage.waitForProgressBar()
-  await locationsActivityPage.clickOnfirstLocationAddressButton()
+  await locationsActivityPage.clickOnFirstLocationAddressButton()
   await I.switchToNextTab()
   await I.seeInCurrentUrl('www.google.com/maps/search')
 }).tag('@dashboard').tag('@LocationsEntriesTests').tag('@C610019')
@@ -222,7 +229,7 @@ Scenario('Verify that user is able to "Clear Current Broadcast"', async ({ I }) 
 
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await locationsPage.navigateToLocations()
-  await locationsPage.addBroadcastIfDontExists(broadcast)
+  await locationsPage.addBroadcastIfDoNotExists(broadcast)
   await locationsPage.removeBroadcast()
   await I.dontSeeElement(locationsPage.activeBroadcastButton)
 }).tag('@dashboard').tag('@LocationsEntriesTests').tag('@C610406')

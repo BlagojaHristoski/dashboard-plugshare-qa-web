@@ -1,6 +1,7 @@
-
 import { BasePage, basePage } from '../base.page'
+
 import { locationsAddNewLocationPage } from './locations.addnewlocation.page'
+
 const { I } = inject()
 
 export class LocationsEditLocationPage extends BasePage {
@@ -46,7 +47,7 @@ export class LocationsEditLocationPage extends BasePage {
   get trailerFriendlyOption () { return '//span[text()="Trailer friendly"]' }
   get garageOption () { return '//span[text()="Garage"]' }
   get handicappedParkingOption () { return '//span[text()="Handicapped parking"]' }
-  get wheelchariAccessibleOption () { return '//span[text()="Wheelchair accessible"]' }
+  get wheelchairAccessibleOption () { return '//span[text()="Wheelchair accessible"]' }
   get illuminatedOption () { return '//span[text()="Illuminated"]' }
   // Locators - Coming Soon
   get comingSoonCheckbox () { return '#location-coming-soon' }
@@ -200,7 +201,7 @@ export class LocationsEditLocationPage extends BasePage {
       await I.click(this.trailerFriendlyOption)
       await I.click(this.garageOption)
       await I.click(this.handicappedParkingOption)
-      await I.click(this.wheelchariAccessibleOption)
+      await I.click(this.wheelchairAccessibleOption)
       await I.click(this.illuminatedOption)
     } else {
       await I.click(this.pullThroughParkingOption)
@@ -263,8 +264,8 @@ export class LocationsEditLocationPage extends BasePage {
 
   async addEntranceCoordinates (entranceLatitude, entranceLongitude) {
     await I.waitForElement(locationsAddNewLocationPage.descriptionField,  this.timeoutSec)
-    const previoslyAddedEntranceCoordinates = await I.grabNumberOfVisibleElements(this.addEntranceCoordinatesButton)
-    if (previoslyAddedEntranceCoordinates) {
+    const previouslyAddedEntranceCoordinates = await I.grabNumberOfVisibleElements(this.addEntranceCoordinatesButton)
+    if (previouslyAddedEntranceCoordinates) {
       await I.click(this.addEntranceCoordinatesButton)
     }
     await I.waitForElement(locationsAddNewLocationPage.entranceLatitudeField, this.timeoutSec)

@@ -1,5 +1,7 @@
-import { basePage, BasePage } from '../base.page'
+import { BasePage, basePage } from '../base.page'
+
 import { locationsPage } from './locations.page'
+
 const { I } = inject()
 
 export class LocationsAddNewLocationPage extends BasePage {
@@ -27,7 +29,7 @@ export class LocationsAddNewLocationPage extends BasePage {
   // Locators - Access Restrictions
   get customersOnlyCheckbox () { return '//input[@value="CUSTOMERS_ONLY"]' }
   get employeesOnlyCheckbox () { return '//input[@value="EMPLOYEES_ONLY"]' }
-  get residentsOnlyCheckobx () { return '//input[@value="RESIDENTS_ONLY"]' }
+  get residentsOnlyCheckbox () { return '//input[@value="RESIDENTS_ONLY"]' }
   get rivianDriversOnlyCheckbox () { return '//input[@value="RIVIAN_DRIVERS_ONLY"]' }
   get guestOnlyCheckbox () { return '//input[@value="GUESTS_ONLY"]' }
   get studentsOnlyCheckbox () { return '//input[@value="STUDENTS_ONLY"]' }
@@ -59,9 +61,9 @@ export class LocationsAddNewLocationPage extends BasePage {
   get pullThroughPullInParkingOption () { return '#location-parking-attributes-1-input' }
   get trailerParkingOption () { return '#location-parking-attributes-2-input' }
   get trailerFriendlyOption () { return '#location-parking-attributes-3-input' }
-  get grageOption () { return '#location-parking-attributes-4-input' }
+  get garageOption () { return '#location-parking-attributes-4-input' }
   get handicappedParkingOption () { return '#location-parking-attributes-5-input' }
-  get wheelchariAccessibleOption () { return '#location-parking-attributes-6-input' }
+  get wheelchairAccessibleOption () { return '#location-parking-attributes-6-input' }
   get illuminatedOption () { return '#location-parking-attributes-7-input' }
   // Locators - Parking Type Name
   get parkingTypeNameDropDown () { return '#location-parking-type-name' }
@@ -72,7 +74,7 @@ export class LocationsAddNewLocationPage extends BasePage {
   get parkingTypeRestrictedOption () { return '//mat-option[@value="Restricted"]' }
   get parkingTypeUnknownOption () { return '//mat-option[@value="Unknown"]' }
   get overheadClearanceMetersField () { return '#location-overhead-clearance-meters' }
-  get parkingLeveField () { return '#location-parking-level' }
+  get parkingLevelField () { return '#location-parking-level' }
   get overheadClearanceFeetField () { return '#location-overhead-clearance-feet' }
   get overheadClearanceInchesField () { return '#location-overhead-clearance-inches' }
   // Locators - Stations
@@ -170,10 +172,10 @@ export class LocationsAddNewLocationPage extends BasePage {
     await I.fillField(this.stationCostDescription, stationCostDescription)
   }
 
-  async populatePlugsForNewLocation (killowats, plugOption) {
+  async populatePlugsForNewLocation (kilowatts, plugOption) {
     await I.waitForElement(this.createLocationButton, this.timeoutSec)
     await locationsAddNewLocationPage.selectPlugType(plugOption)
-    await I.fillField(this.plugKilowattsField, killowats)
+    await I.fillField(this.plugKilowattsField, kilowatts)
   }
 
   async validatePopUpForEmptyField (emptyField) {

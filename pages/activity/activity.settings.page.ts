@@ -1,4 +1,5 @@
-import { basePage, BasePage } from '../base.page'
+import { BasePage, basePage } from '../base.page'
+
 const { I } = inject()
 
 export class ActivitySettingsPage extends BasePage {
@@ -14,7 +15,7 @@ export class ActivitySettingsPage extends BasePage {
   get positiveReviewCheckbox () { return '#positive-review-toggle' }
   get commentCheckbox () { return '#comment-toggle' }
   get photoCheckbox () { return '#photo-toggle' }
-  get editSubmitedCheckbox () { return '#edit-toggle' }
+  get editSubmittedCheckbox () { return '#edit-toggle' }
   get settingsSubmitButton () { return '#settings-submit-button' }
   // methods
   async selectAllEmailNotifications () {
@@ -23,7 +24,7 @@ export class ActivitySettingsPage extends BasePage {
     await basePage.selectCheckbox(this.positiveReviewCheckbox)
     await basePage.selectCheckbox(this.commentCheckbox)
     await basePage.selectCheckbox(this.photoCheckbox)
-    await basePage.selectCheckbox(this.editSubmitedCheckbox)
+    await basePage.selectCheckbox(this.editSubmittedCheckbox)
     await I.click(this.settingsSubmitButton)
     await basePage.waitForProgressBar()
     await I.see('Settings successfully saved')
@@ -34,7 +35,7 @@ export class ActivitySettingsPage extends BasePage {
     await basePage.validateSelectedCheckbox(this.positiveReviewCheckbox)
     await basePage.validateSelectedCheckbox(this.commentCheckbox)
     await basePage.validateSelectedCheckbox(this.photoCheckbox)
-    await basePage.validateSelectedCheckbox(this.editSubmitedCheckbox)
+    await basePage.validateSelectedCheckbox(this.editSubmittedCheckbox)
   }
 
   async editUsername (newUsername) {
@@ -56,7 +57,7 @@ export class ActivitySettingsPage extends BasePage {
     await I.seeElement(this.positiveReviewCheckbox)
     await I.seeElement(this.commentCheckbox)
     await I.seeElement(this.photoCheckbox)
-    await I.seeElement(this.editSubmitedCheckbox)
+    await I.seeElement(this.editSubmittedCheckbox)
     await I.seeElement(this.settingsSubmitButton)
   }
 }

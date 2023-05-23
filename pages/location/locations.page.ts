@@ -1,4 +1,5 @@
-import { basePage, BasePage } from '../base.page'
+import { BasePage, basePage } from '../base.page'
+
 import assert = require('assert')
 const { I } = inject()
 
@@ -95,7 +96,7 @@ export class LocationsPage extends BasePage {
     await I.click(this.firstActiveReviewButton)
   }
 
-  async clickOneditButtonOnLocationDetailsScreen () {
+  async clickOnEditButtonOnLocationDetailsScreen () {
     await I.waitForElement(locationsPage.editButtonOnLocationDetailsScreen, basePage.timeoutSec)
     await I.click(this.editButtonOnLocationDetailsScreen)
   }
@@ -105,7 +106,7 @@ export class LocationsPage extends BasePage {
     await I.click(locationsPage.clearSearchButton)
   }
 
-  async clickOnFirstCheckobxButton () {
+  async clickOnFirstCheckboxButton () {
     await I.waitForElement(this.firstLocationCheckBox, this.timeoutSec)
     await I.click(this.firstLocationCheckBox)
   }
@@ -115,7 +116,7 @@ export class LocationsPage extends BasePage {
     await I.click(this.cancelMultipleBroadcastButton)
   }
 
-  async clickOnbroadcastToLocationsButton () {
+  async clickOnBroadcastToLocationsButton () {
     await I.waitForElement(this.broadcastToLocationsButton, this.timeoutSec)
     await I.click(this.broadcastToLocationsButton)
   }
@@ -182,7 +183,7 @@ export class LocationsPage extends BasePage {
     }
   }
 
-  async addBroadcastIfDontExists (message, duration?) {
+  async addBroadcastIfDoNotExists (message, duration?) {
     await I.waitForElement(this.historyButton, basePage.timeoutSec)
     const activeBroadcast = await I.grabNumberOfVisibleElements(this.activeBroadcastButton)
 
@@ -234,8 +235,8 @@ export class LocationsPage extends BasePage {
   }
 
   async addBroadcastForCheckedLocation (message, duration?) {
-    await locationsPage.clickOnFirstCheckobxButton()
-    await locationsPage.clickOnbroadcastToLocationsButton()
+    await locationsPage.clickOnFirstCheckboxButton()
+    await locationsPage.clickOnBroadcastToLocationsButton()
     await I.waitForElement(this.broadcastMessageInput, basePage.timeoutSec)
     await I.fillField(this.broadcastMessageInput, message)
     await I.click(this.broadcastDurationDropdown)

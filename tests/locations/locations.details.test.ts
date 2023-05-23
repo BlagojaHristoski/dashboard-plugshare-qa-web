@@ -1,10 +1,13 @@
+import * as location from '../../lib/data/location.json'
+
 import { basePage } from '../../pages/base.page'
+import { locationsAddNewLocationPage } from '../../pages/location/locations.addnewlocation.page'
+import { locationsEditLocationPage } from '../../pages/location/locations.editlocation.page'
 import { locationsPage } from '../../pages/location/locations.page'
 import { locationsSearchAndFiltersPage } from '../../pages/location/searchandfilters.page'
-import { locationsEditLocationPage } from '../../pages/location/locations.editlocation.page'
-import * as location from '../../lib/data/location.json'
+
 import assert = require('assert')
-import { locationsAddNewLocationPage } from '../../pages/location/locations.addnewlocation.page'
+
 const locationName = location.edit_location.location.locationName
 const locationAddress = location.edit_location.location.address
 const locationDescription = location.add_new_location.locationDescription
@@ -12,7 +15,7 @@ const costDescription = location.add_new_location.locationCostDescription
 const locationPhone = location.add_new_location.locationPhone
 const locationHours = location.add_new_location.locationHours
 const locationEntranceLatitude = location.add_new_location.locationEntranceLatitude
-const locationEntranceLongtitude = location.add_new_location.locationEntranceLongtitude
+const locationEntranceLongitude = location.add_new_location.locationEntranceLongitude
 
 Feature('Locations Tests')
 Before(async () => {
@@ -213,7 +216,7 @@ Scenario('Verify that user is able to add entrance coordinates', async ({ I }) =
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
   await basePage.waitForProgressBar()
-  await locationsEditLocationPage.addEntranceCoordinates(locationEntranceLatitude, locationEntranceLongtitude)
+  await locationsEditLocationPage.addEntranceCoordinates(locationEntranceLatitude, locationEntranceLongitude)
   await I.waitForText('Location and its associated stations and plugs successfully updated', basePage.timeoutSec)
   
 }).tag('@dashboard').tag('@LocationsDetailsTests').tag('@C650809')
@@ -238,7 +241,7 @@ Scenario('Verify that alert is displayed when user reloads page with unsaved cha
   await I.switchToNextTab()
   await basePage.waitForProgressBar()
   await I.waitForElement(locationsAddNewLocationPage.entranceLongitudeField, basePage.timeoutSec)
-  await I.fillField(locationsAddNewLocationPage.entranceLongitudeField, locationEntranceLongtitude)
+  await I.fillField(locationsAddNewLocationPage.entranceLongitudeField, locationEntranceLongitude)
   await locationsPage.locationsButtonClick()
   await I.checkTextInPopUp('WARNING: You have unsaved changes. Press Cancel to go back and save these changes, or OK to lose these changes.')
 }).tag('@dashboard').tag('@LocationsDetailsTests').tag('@C669135')
