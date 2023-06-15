@@ -28,7 +28,7 @@ Scenario('Verify that user is able to edit location name', async ({ I }) => {
   const newLocationName = `${locationName} ${randomNumber}`
 
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
@@ -44,7 +44,7 @@ Scenario('Verify that user is able to edit location name', async ({ I }) => {
 
 Scenario('Verify that user is able to pin/unpin photo', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)  
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
@@ -62,7 +62,7 @@ Scenario('Verify that user is able to update Address', async ({ I }) => {
   const newLocationAddress = `${locationAddress} ${randomNumber}`
 
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
@@ -77,7 +77,7 @@ Scenario('Verify that user is able to update Address', async ({ I }) => {
 
 Scenario('Click on Google on the map', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
@@ -89,7 +89,7 @@ Scenario('Click on Google on the map', async ({ I }) => {
 
 Scenario('Verify that user can see Terrain mode on the map', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
@@ -102,7 +102,7 @@ Scenario('Verify that user can see Terrain mode on the map', async ({ I }) => {
 
 Scenario('Verify that user can see Satellite mode on the map', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
@@ -115,7 +115,7 @@ Scenario('Verify that user can see Satellite mode on the map', async ({ I }) => 
 
 Scenario('Verify that user can see Labels on Satellite mode on the map', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
@@ -128,7 +128,7 @@ Scenario('Verify that user can see Labels on Satellite mode on the map', async (
 
 Scenario('Verify that user is able to select Access options', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
@@ -141,7 +141,7 @@ Scenario('Verify that user is able to select Access options', async ({ I }) => {
 
 Scenario('Verify that user is able to select "Amenities"', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
@@ -154,7 +154,7 @@ Scenario('Verify that user is able to select "Amenities"', async ({ I }) => {
 
 Scenario('Verify that user is able to select "Parking Attributes"', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
@@ -167,7 +167,7 @@ Scenario('Verify that user is able to select "Parking Attributes"', async ({ I }
 
 Scenario('Verify that user is able to set "Opening Date" and "Opened At"', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
@@ -181,7 +181,7 @@ Scenario('Verify that user is able to set "Opening Date" and "Opened At"', async
 
 Scenario('Verify that user is able to clear "Opening Date" and "Opened At"', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
@@ -199,7 +199,7 @@ Scenario('Verify that user is able to clear "Opening Date" and "Opened At"', asy
 
 Scenario('Verify that user is able to edit Description, Phone, Hours and Cost Description', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
@@ -211,7 +211,7 @@ Scenario('Verify that user is able to edit Description, Phone, Hours and Cost De
 
 Scenario('Verify that user is able to add entrance coordinates', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
@@ -223,19 +223,27 @@ Scenario('Verify that user is able to add entrance coordinates', async ({ I }) =
 
 Scenario('Verify that user is able to choose "POI Name"', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
   await basePage.waitForProgressBar()
-  await locationsEditLocationPage.addPOIName('Airport')
+  await I.waitForElement(locationsAddNewLocationPage.pOIDropDown, basePage.timeoutSec)
+  await I.waitForElement(locationsAddNewLocationPage.pOIDropDown, basePage.timeoutSec)
+  const poiText = await I.grabTextFrom(locationsAddNewLocationPage.pOIDropDown)
+
+  if (poiText === 'Airport') {
+    await locationsEditLocationPage.addPOIName('Bank')
+  } else {
+    await locationsEditLocationPage.addPOIName('Airport')
+  }
   await I.waitForText('Location and its associated stations and plugs successfully updated', basePage.timeoutSec)
   
 }).tag('@dashboard').tag('@LocationsDetailsTests').tag('@C657626')
 
 Scenario('Verify that alert is displayed when user reloads page with unsaved changes in "Edit Location" page', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()

@@ -29,5 +29,5 @@ Scenario('Verify that user is navigated to PlugShare Terms of Use page on click 
     await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
     await basePage.termsOfUseButtonClick()
     await I.switchToNextTab()
-    await I.seeInCurrentUrl('https://company.plugshare.com/terms.htaml')
+    await I.seeInCurrentUrl('https://company.plugshare.com/terms.html')
   }).tag('@dashboard').tag('@FooterTests').tag('@C609640')

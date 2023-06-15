@@ -50,21 +50,13 @@ exports.config = {
   hooks: [],
   include: {
     I: './steps_file.js',
-    /*
-     * include POM files here. Example
-     * loginPage: './pages/login/login.page.ts',
-     */
-  },
-  mocha: {
-    "reporterOptions": {
-      "mochaFile": "jenkinsresults/result.xml"
-    }
   },
   output: './output',
   plugins: {
     allure: {
-      enabled: process.env.ENABLE_ALLURE_REPORTS === 'true',
-    },
+      enabled: true,
+      require: '@codeceptjs/allure-legacy',
+  },
     retryFailedStep: {
       enabled: true,
     },

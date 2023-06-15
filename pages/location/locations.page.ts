@@ -67,7 +67,7 @@ export class LocationsPage extends BasePage {
   get broadcastToLocationsButton () { return '#multi-broadcast-button' }
   // methods
   async navigateToLocations () {
-    await I.amOnPage('/locations')
+    await I.amOnPage(`${URL}/locations`)
     await I.waitForElement(locationsPage.searchAndApplyFiltersButton, basePage.timeoutSec)
   }
 

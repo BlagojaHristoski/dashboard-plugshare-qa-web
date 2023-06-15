@@ -23,7 +23,7 @@ Before(async () => {
 
 Scenario('Address displays underneath name', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   const numberOfLOcations = await I.grabNumberOfVisibleElements(locationsPage.locationContainer)
 
   const locationAddresses = await I.grabNumberOfVisibleElements(locationsPage.firstLocationAddress)
@@ -33,7 +33,7 @@ Scenario('Address displays underneath name', async ({ I }) => {
 
 Scenario('Date created is populated', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   const numberOfLOcations = await I.grabNumberOfVisibleElements(locationsPage.locationContainer)
 
   const locationDataCreatedFields = await I.grabNumberOfVisibleElements(locationsPage.dateCreatedField)
@@ -43,7 +43,7 @@ Scenario('Date created is populated', async ({ I }) => {
 
 Scenario('History button redirects to check in history page', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.firstEnabledHistoryButtonClick()
   await I.switchToNextTab()
   await I.waitForElement(locationsHistoryPage.checkInHistoryTitle, basePage.timeoutSec)
@@ -54,27 +54,27 @@ Scenario('History button redirects to check in history page', async ({ I }) => {
 
 Scenario('Reviews button redirects to reviews page', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.clickOnFirstReviewButton()
   await locationsActivityPage.validateActivityPage()
 }).tag('@dashboard').tag('@LocationsEntriesTests').tag('@C607773')
 
 Scenario('Reviews button is inactive if no reviews are posted', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.validateDisabledReviewsButton()
 }).tag('@dashboard').tag('@LocationsEntriesTests').tag('@C607779')
 
 Scenario('Broadcast button displays broadcast overlay', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.clickOnFirstBroadcastButton()
   await locationsPage.validateBroadcastDialog()
 }).tag('@dashboard').tag('@LocationsEntriesTests').tag('@C610404')
 
 Scenario('Edit button redirects to Edit location page', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()
   await locationsEditLocationPage.validateEditLocationPage()
@@ -82,7 +82,7 @@ Scenario('Edit button redirects to Edit location page', async ({ I }) => {
 
 Scenario('Location address links to google maps', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.firstEnabledHistoryButtonClick()
   await I.switchToNextTab()
   await locationsEditLocationPage.googleLocationButtonClick()
@@ -92,7 +92,7 @@ Scenario('Location address links to google maps', async ({ I }) => {
 
 Scenario('Reviews button navigates to Activity page', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.clickOnFirstReviewsButton()
   await basePage.waitForProgressBar()
   await locationsActivityPage.validateActivityPage()
@@ -100,7 +100,7 @@ Scenario('Reviews button navigates to Activity page', async ({ I }) => {
 
 Scenario('Edit button navigates to Location Edit page', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.firstEnabledHistoryButtonClick()
   await I.switchToNextTab()
   await locationsPage.clickOnEditButtonOnLocationDetailsScreen()
@@ -109,7 +109,7 @@ Scenario('Edit button navigates to Location Edit page', async ({ I }) => {
 
 Scenario('Location address links to google maps', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.clickOnFirstReviewsButton()
   await basePage.waitForProgressBar()
   await locationsActivityPage.clickOnFirstLocationAddressButton()
@@ -121,7 +121,7 @@ Scenario('Link to respond to message allows user to submit a comment', async ({ 
   const messageForPubliclyResponse = 'QA Team Response Message'
 
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.clickOnFirstReviewsButton()
   await basePage.waitForProgressBar()
   await locationsActivityPage.deletePreviousResponseIfExists()
@@ -133,7 +133,7 @@ Scenario('Link to respond to message allows user to cancel the pending comment',
   const messageForPubliclyResponse = 'QA Team Response Message'
 
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.clickOnFirstReviewsButton()
   await basePage.waitForProgressBar()
   await locationsActivityPage.deletePreviousResponseIfExists()
@@ -146,7 +146,7 @@ Scenario('Verify that user is able to Edit Response', async ({ I }) => {
   const editMessage = 'Edit Response Message'
 
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.clickOnFirstReviewsButton()
   await basePage.waitForProgressBar()
   await locationsActivityPage.deletePreviousResponseIfExists()
@@ -159,7 +159,7 @@ Scenario('Verify that user is able to Delete Response', async ({ I }) => {
   const messageForPubliclyResponse = 'QA Team Response Message'
 
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.clickOnFirstReviewsButton()
   await basePage.waitForProgressBar()
   await locationsActivityPage.deletePreviousResponseIfExists()
@@ -172,7 +172,7 @@ Scenario('Privately message user button allows user to submit a message', async 
   const privatelyMessage = 'Message from QA team'
 
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.clickOnFirstReviewsButton()
   await basePage.waitForProgressBar()
   await locationsActivityPage.sendPrivatelyMessageToUser(true, privatelyMessage)
@@ -184,7 +184,7 @@ Scenario('Privately message user button allows user to cancel pending message', 
   const privatelyMessage = 'Message from QA team'
 
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.clickOnFirstReviewsButton()
   await basePage.waitForProgressBar()
   await locationsActivityPage.sendPrivatelyMessageToUser(false, privatelyMessage)
@@ -195,7 +195,7 @@ Scenario('Report a problem button allows user to submit a problem', async ({ I }
   const problem = 'Report Activity from QA team'
 
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.clickOnFirstReviewsButton()
   await basePage.waitForProgressBar()
   await locationsActivityPage.reportProblem(true, problem)
@@ -207,7 +207,7 @@ Scenario('Report a problem button allows user to cancel pending problem', async 
   const problem = 'Report Activity from QA team'
 
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.clickOnFirstReviewsButton()
   await basePage.waitForProgressBar()
   await locationsActivityPage.reportProblem(false, problem)
@@ -218,7 +218,7 @@ Scenario('Verify that user is able to create a broadcast', async ({ I }) => {
   const broadcast = 'New Broadcast from QA team'
 
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.deleteActiveBroadcastIfExists()
   await locationsPage.addBroadcast(broadcast)
   await I.waitForElement(locationsPage.activeBroadcastButton, basePage.timeoutSec)
@@ -228,7 +228,7 @@ Scenario('Verify that user is able to "Clear Current Broadcast"', async ({ I }) 
   const broadcast = 'New Broadcast from QA team'
 
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsPage.addBroadcastIfDoNotExists(broadcast)
   await locationsPage.removeBroadcast()
   await I.dontSeeElement(locationsPage.activeBroadcastButton)
@@ -238,7 +238,7 @@ Scenario('Verify that user is able to report problem from edit location', async 
   const problem = 'Report Activity from QA team'
 
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-  await locationsPage.navigateToLocations()
+  await basePage.navigateToLocations()
   await locationsSearchAndFiltersPage.searchLocationByName(locationName)
   await locationsPage.clickOnFirstEditButton()
   await I.switchToNextTab()

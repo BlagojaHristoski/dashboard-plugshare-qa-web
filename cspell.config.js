@@ -57,5 +57,8 @@ module.exports = /** @type {import("@cspell/cspell-types").FileSettings} */ ({
     'Bitola',
     'dont',
     'Recargo',
+    'activityfilters',
+    'activitylocations',
+    'activitysettings',
     ],
 })

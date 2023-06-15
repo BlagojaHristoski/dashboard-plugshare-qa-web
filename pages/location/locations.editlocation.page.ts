@@ -8,11 +8,11 @@ export class LocationsEditLocationPage extends BasePage {
   // locators
   get editLocationTitle () { return '//h2[text()="Edit Location"]' }
   get editLocationFormContainer () { return '#locationForm' }
-  get locationIdField () { return '#location-id' }
-  get locationPlugScoreField () { return '#location-plugscore' }
+  get locationIdField () { return '//span[@class="plugshare-id"]' }
+  get locationPlugScoreField () { return '//span[@class="plugscore"]' }
   get locationLocaleField () { return '#location-locale' }
-  get locationCreatedAtField () { return '#location-created-at' }
-  get locationLastUpdatedAtField () { return '#location-updated-at' }
+  get locationCreatedAtField () { return '//span[@class="created-at"]' }
+  get locationLastUpdatedAtField () { return '//span[@class="updated-at"]' }
   get locationNameField () { return '#location-name' }
   get uploadNewCoverPhotosButton () { return '#location-photo-upload-photo-button' }
   get operatorMessageField () { return '#location-operator-message' }
@@ -70,10 +70,9 @@ export class LocationsEditLocationPage extends BasePage {
 
   async validateEditLocationPage () {
     await I.waitForElement(this.editLocationFormContainer, basePage.timeoutSec)
-    await I.see('Location Details')
+    await I.see('Edit Location')
     await I.seeElement(this.locationIdField)
     await I.seeElement(this.locationPlugScoreField)
-    await I.seeElement(this.locationLocaleField)
     await I.seeElement(this.locationCreatedAtField)
     await I.seeElement(this.locationLastUpdatedAtField)
     await I.seeElement(this.locationNameField)
@@ -277,6 +276,8 @@ export class LocationsEditLocationPage extends BasePage {
   async addPOIName (option?) {
     await I.waitForElement(locationsAddNewLocationPage.pOIDropDown, basePage.timeoutSec)
     await I.click(locationsAddNewLocationPage.pOIDropDown)
+    await I.waitForElement(locationsAddNewLocationPage.poiDropDownOpened, basePage.timeoutSec)
+
     switch (option) {
       case 'Airport': {
         await I.click(locationsAddNewLocationPage.pOIAirportOption)

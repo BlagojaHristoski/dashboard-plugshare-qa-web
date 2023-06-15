@@ -39,11 +39,12 @@ export class LocationsAddNewLocationPage extends BasePage {
   get openedAtDropDown () { return '#location-opened-at-form-field' }
   // Locators - Point of interest
   get pOIDropDown () { return '#location-poi-name' }
-  get pOIAirportOption () { return '//span[text()="Airport"]' }
-  get pOIArenaConcertHallOption () { return '//span[text()="Arena/Concert Hall"]' }
-  get pOIArtGalleryOption () { return '//span[text()="Art Gallery"]' }
-  get pOIBankOption () { return '//span[text()="Bank"]' }
-  get pOICampgroundOption () { return '//span[text()="Campground"]' }
+  get poiDropDownOpened () { return '#location-poi-name-panel' }
+  get pOIAirportOption () { return '//span[text()="Airport"]/..' }
+  get pOIArenaConcertHallOption () { return '//span[text()="Arena/Concert Hall"]/..' }
+  get pOIArtGalleryOption () { return '//span[text()="Art Gallery"]/..' }
+  get pOIBankOption () { return '//span[text()="Bank"]/..' }
+  get pOICampgroundOption () { return '//span[text()="Campground"]/..' }
   // Locators - Amenities
   get lodgingCheckbox () { return '#location-amenities-0-input' }
   get diningCheckbox () { return '#location-amenities-1-input' }
