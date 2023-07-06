@@ -40,10 +40,6 @@ export class BasePage {
     await I.amOnPage(`${URL}//settings`)
   }
 
-  async getText (text) {
-    return `//a[text()="${text}"]`
-  }
-
   async signInDashboard () {
     await I.waitForElement(this.loginField, this.timeoutSec)
     await I.fillField(this.loginField, email)

@@ -193,6 +193,7 @@ export class LocationsPage extends BasePage {
   }
 
   async removeBroadcast () {
+    await I.waitForElement(this.activeBroadcastButton, basePage.timeoutSec)
     await I.click(this.activeBroadcastButton)
     await I.click(this.clearCurrentBroadcastButton)
     await basePage.waitForProgressBar()

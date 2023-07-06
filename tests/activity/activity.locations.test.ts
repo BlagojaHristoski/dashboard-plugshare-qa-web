@@ -1,6 +1,5 @@
-import { basePage } from '../../pages/base.page'
-import { locationsPage } from '../../pages/location/locations.page'
 import { activityFiltersPage } from '../../pages/activity/activity.filters.page'
+import { basePage } from '../../pages/base.page'
 import { locationsActivityPage } from '../../pages/location/locations.activity.page'
 
 Feature('Activity Locations Tests')
@@ -11,32 +10,32 @@ Before(async () => {
 
 Scenario('Address displays underneath name', async ({ I }) => {
    await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-   await locationsPage.navigateToActivity()
+   await basePage.navigateToActivity()
    await activityFiltersPage.validateAddressFieldsActivityPage()
 }).tag('@dashboard').tag('@ActivityLocationsTests').tag('@C608075')
 
 Scenario('Details of check in displays username', async ({ I }) => {
     await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-    await locationsPage.navigateToActivity()
+    await basePage.navigateToActivity()
     await activityFiltersPage.validateUsernameFieldsActivityPage()
  }).tag('@dashboard').tag('@ActivityLocationsTests').tag('@C608076')
 
  Scenario('Details of check in displays comment', async ({ I }) => {
    await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-   await locationsPage.navigateToActivity()
+   await basePage.navigateToActivity()
    await activityFiltersPage.filterOnlyComments()
    await activityFiltersPage.validateUsernameFieldsActivityPage()
 }).tag('@dashboard').tag('@ActivityLocationsTests').tag('@C608077')
 
 Scenario('Details of check in displays date', async ({ I }) => {
    await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-   await locationsPage.navigateToActivity()
+   await basePage.navigateToActivity()
    await activityFiltersPage.validateDateAndTimeFieldsActivityPage()
 }).tag('@dashboard').tag('@ActivityLocationsTests').tag('@C608078')
 
 Scenario('Details of check in displays time', async ({ I }) => {
    await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-   await locationsPage.navigateToActivity()
+   await basePage.navigateToActivity()
    await activityFiltersPage.validateDateAndTimeFieldsActivityPage()
 }).tag('@dashboard').tag('@ActivityLocationsTests').tag('@C608078')
 
@@ -44,7 +43,7 @@ Scenario('Link to respond to message allows user to submit a comment', async ({ 
    const privatelyMessage = 'Message from QA team'
  
    await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-   await locationsPage.navigateToActivity()
+   await basePage.navigateToActivity()
    await locationsActivityPage.sendPrivatelyMessageToUser(true, privatelyMessage)
    await basePage.waitForProgressBar()
    await I.waitForText('Message sent', basePage.timeoutSec)
@@ -54,7 +53,7 @@ Scenario('Link to respond to message allows user to submit a comment', async ({ 
    const privatelyMessage = 'Message from QA team'
  
    await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-   await locationsPage.navigateToActivity()
+   await basePage.navigateToActivity()
    await locationsActivityPage.sendPrivatelyMessageToUser(false, privatelyMessage)
    await I.dontSeeElement(locationsActivityPage.sendMessagePopUpField)
  }).tag('@dashboard').tag('@LocationsEntriesTests').tag('@C608081')
@@ -64,7 +63,7 @@ Scenario('Link to respond to message allows user to submit a comment', async ({ 
    const editMessageForPubliclyResponse = 'QA Team Response Message - Edited'
  
    await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-   await locationsPage.navigateToActivity()
+   await basePage.navigateToActivity()
    await locationsActivityPage.deletePreviousResponseIfExists()
    await locationsActivityPage.addPubliclyRespond(true, messageForPubliclyResponse)
    await basePage.waitForProgressBar()
@@ -77,7 +76,7 @@ Scenario('Link to respond to message allows user to submit a comment', async ({ 
    const messageForPubliclyResponse = 'QA Team Response Message'
  
    await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-   await locationsPage.navigateToActivity()
+   await basePage.navigateToActivity()
    await locationsActivityPage.deletePreviousResponseIfExists()
    await locationsActivityPage.addPubliclyRespond(true, messageForPubliclyResponse)
    await basePage.waitForProgressBar()
@@ -89,7 +88,7 @@ Scenario('Link to respond to message allows user to submit a comment', async ({ 
    const problem = 'Report Activity from QA team'
  
    await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-   await locationsPage.navigateToActivity()
+   await basePage.navigateToActivity()
    await locationsActivityPage.reportProblem(true, problem)
    await basePage.waitForProgressBar()
    await I.see('Activity successfully reported')
@@ -99,7 +98,7 @@ Scenario('Link to respond to message allows user to submit a comment', async ({ 
    const problem = 'Report Activity from QA team'
  
    await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
-   await locationsPage.navigateToActivity()
+   await basePage.navigateToActivity()
    await locationsActivityPage.reportProblem(false, problem)
    await I.dontSeeElement(locationsActivityPage.reportActivityField)
  }).tag('@dashboard').tag('@LocationsEntriesTests').tag('@C608085')
