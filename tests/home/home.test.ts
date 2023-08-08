@@ -22,5 +22,5 @@ Scenario('Verify that user is correctly navigated to Style guide page', async ({
   await basePage.signInDashboard()
   await homePage.styleGuideButtonClick()
   await I.switchToNextTab()
-  await I.seeInCurrentUrl('data_entry_style_guide_for_plugshare_dashboard')
+  await I.waitInUrl('data_entry_style_guide_for_plugshare_dashboard', basePage.timeoutSec)
 }).tag('@dashboard').tag('@HomeTests').tag('@C607680')
