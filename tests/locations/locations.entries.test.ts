@@ -55,7 +55,7 @@ Scenario('History button redirects to check in history page', async ({ I }) => {
 Scenario('Reviews button redirects to reviews page', async ({ I }) => {
   await I.waitForElement(basePage.logoutButton, basePage.timeoutSec)
   await basePage.navigateToLocations()
-  await locationsPage.clickOnFirstReviewButton()
+  await locationsPage.clickOnFirstReviewsButton()
   await locationsActivityPage.validateActivityPage()
 }).tag('@dashboard').tag('@LocationsEntriesTests').tag('@C607773')
 

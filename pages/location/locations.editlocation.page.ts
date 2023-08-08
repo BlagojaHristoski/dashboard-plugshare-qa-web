@@ -116,6 +116,7 @@ export class LocationsEditLocationPage extends BasePage {
   }
 
   async pinPhotos () {
+    await I.waitForElement(this.locationPhotos, this.timeoutSec)
     const pin = await I.grabNumberOfVisibleElements(this.unpinPhoto)
     if (pin) {
       this.unpinPhotos()
@@ -127,6 +128,7 @@ export class LocationsEditLocationPage extends BasePage {
   }
 
   async unpinPhotos () {
+    await I.waitForElement(this.locationPhotos, this.timeoutSec)
     const unPin = await I.grabNumberOfVisibleElements(this.unpinPhoto)
     if (!unPin) {
       this.pinPhotos()

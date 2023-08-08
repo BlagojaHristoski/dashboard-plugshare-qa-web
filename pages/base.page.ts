@@ -33,11 +33,11 @@ export class BasePage {
   }
 
   async navigateToActivity () {
-    await I.amOnPage(`${URL}//activities`)
+    await I.amOnPage(`${URL}/activities`)
   }
 
   async navigateToSettings () {
-    await I.amOnPage(`${URL}//settings`)
+    await I.amOnPage(`${URL}/settings`)
   }
 
   async signInDashboard () {

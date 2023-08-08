@@ -128,6 +128,7 @@ Scenario('Has active broadcast checked returns active broadcast locations', asyn
   await locationsSearchAndFiltersPage.searchLocationsWithActiveBroadcast()
   await basePage.waitForProgressBar()
   await I.seeElement(locationsPage.activeBroadcastButton)
+  await locationsPage.removeBroadcast()
 }).tag('@dashboard').tag('@SearchAndFiltersTests').tag('@C607791')
 
 Scenario('Sort by location date created', async ({ I }) => {

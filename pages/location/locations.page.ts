@@ -76,11 +76,6 @@ export class LocationsPage extends BasePage {
     await I.click(locationsPage.createNewLocationButton)
   }
 
-  async clickOnFirstReviewButton () {
-    await I.waitForElement(locationsPage.firstReviewButton, basePage.timeoutSec)
-    await I.click(locationsPage.firstReviewButton)
-  }
-
   async clickOnFirstBroadcastButton () {
     await I.waitForElement(locationsPage.firstBroadcastButton, basePage.timeoutSec)
     await I.click(locationsPage.firstBroadcastButton)
