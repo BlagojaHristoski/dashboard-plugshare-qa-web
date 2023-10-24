@@ -2,8 +2,11 @@
 Test automation using https://codecept.io framework.
 
 # Installation
+
 Run `npm install` inside a terminal from root directory to install node modules.
 Run `npm install playwright` inside a terminal.
+Run `npm install -g selenium-standalone`
+Run `selenium-standalone install` in CMD for installing the webdrivers, `selenium-standalone start` to start the service
 
 # Dependencies 
 If using Webdriver then Java SDK must be available on the machine.
@@ -17,7 +20,7 @@ To run tests locally you must provide a `.env` file in the root directory with f
 
 ```
 BASE_URL=dashboard-staging.plugshare.com
-BROWSER_TYPE=chromium
+BROWSER_TYPE=chrome
 BROWSER_WINDOW_SIZE=1920x1080
 CAPTURE_VIDEO=false
 ENABLE_ALLURE_REPORTS=false

@@ -23,7 +23,7 @@ const currentDate = new Date()
 console.info('current date:', currentDate)
 
 const BASE_URL = process.env.BASE_URL || ''
-const BROWSER_TYPE = process.env.BROWSER_TYPE || 'chromium'
+const BROWSER_TYPE = process.env.BROWSER_TYPE || ["chrome","MicrosoftEdge","firefox"]
 const BROWSER_WINDOW_SIZE = process.env.BROWSER_WINDOW_SIZE || '1920x1080'
 
 const SCREENSHOT_SUBFOLDER = `${BROWSER_TYPE}/${BROWSER_WINDOW_SIZE}`
@@ -41,22 +41,36 @@ exports.config = {
       fullPageScreenshots: process.env.FULL_PAGE_SCREENSHOT === 'true',
       show: process.env.SHOW_BROWSER === 'true',
       url: `https://${BASE_URL}`,
-      video: process.env.CAPTURE_VIDEO === 'true',
+      video: process.env.CAPTURE_VIDEO === 'false',
       waitForAction: 200,
       waitForNavigation: 'networkidle',
       windowSize: BROWSER_WINDOW_SIZE,
     },
+  
+    // WebDriver: {
+    //   url: BASE_URL,
+    //   browser: BROWSER_TYPE,
+    //   path: '/',
+    //   restart: false,
+    //   windowSize: BROWSER_WINDOW_SIZE,
+    //   desiredCapabilities: {
+    //     chromeOptions: {
+    //       args: [ /*"--headless",*/ "--disable-gpu", "--no-sandbox" ]
+    //     }
+    //   }
+    // },
   },
   hooks: [],
   include: {
     I: './steps_file.js',
   },
+  mocha: {},
   output: './output',
   plugins: {
     allure: {
       enabled: true,
       require: '@codeceptjs/allure-legacy',
-  },
+    },
     retryFailedStep: {
       enabled: true,
     },

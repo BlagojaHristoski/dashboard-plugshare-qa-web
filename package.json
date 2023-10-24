@@ -1,45 +1,41 @@
 {
-  "name": "dashboard-plugshare-web",
+  "name": "guitar_center_atg",
   "private": true,
   "version": "0.0.1",
   "scripts": {
     "clean:windows": "del /q output",
-    "clean": "rm -rf ./output",
+    "clean": "rm -rf output/",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "lint:staged": "lint-staged",
     "report": "allure serve output -p 8088",
+    "report:generate": "allure generate",
+    "report:open": "allure open -p 8088",
     "spell-check": "cspell",
     "test": "codeceptjs run --verbose --grep",
+    "test:chrome": "BROWSER_TYPE=chrome npx codeceptjs run ./tests/search.test.ts --verbose --override",
+    "test:search": "codeceptjs run ./tests/search.test.ts --verbose --override",
     "test:all": "codeceptjs run --verbose ",
-    "test:tagged": "./run-tagged-tests.sh",
-    "test:home": "codeceptjs run ./tests/home/home.test.ts --verbose --override",
-    "test:locations": "codeceptjs run ./tests/locations/locations.test.ts --verbose --override",
-    "test:locations:entries": "codeceptjs run ./tests/locations/locations.entries.test.ts --verbose --override",
-    "test:locations:details": "codeceptjs run ./tests/locations/locations.details.test.ts --verbose --override",
-    "test:searchandfilters": "codeceptjs run ./tests/locations/searchandfilters.test.ts --verbose --override",
-    "test:activityfilters": "codeceptjs run ./tests/activity/activity.filters.test.ts --verbose --override",
-    "test:activitylocations": "codeceptjs run ./tests/activity/activity.locations.test.ts --verbose --override",
-    "test:activitysettings": "codeceptjs run ./tests/activity/activity.settings.test.ts --verbose --override",
-    "test:footer": "codeceptjs run ./tests/footer.test.ts --verbose --override"
+    "test:tagged": "./run-tagged-tests.sh"
   },
   "dependencies": {
     "@codeceptjs/allure-legacy": "^1.0.2",
-    "@codeceptjs/mailslurp-helper": "^1.0.7",
-    "allure": "^0.0.0",
     "allure-commandline": "^2.22.2",
     "codeceptjs": "^3.4.1",
     "codeceptjs-chai": "^2.3.5",
     "cspell": "^6.31.1",
     "dotenv": "^16.0.3",
-    "eslint": "^8.37.0",
-    "husky": "^8.0.3",
-    "mailslurp": "^0.0.1-security"
+    "eslint": "^8.51.0",
+    "selenium-webdriver": "^4.14.0",
+    "webdriver": "^8.18.2"
   },
   "devDependencies": {
+    "@codeceptjs/configure": "^0.10.0",
     "@types/node": "^18.14.6",
-    "playwright": "1.18",
+    "playwright": "^1.38",
+    "selenium-standalone": "^9.2.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "webdriverio": "^6.12.1"
   }
 }
