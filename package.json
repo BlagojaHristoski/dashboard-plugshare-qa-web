@@ -12,9 +12,9 @@
     "report:generate": "allure generate",
     "report:open": "allure open -p 8088",
     "spell-check": "cspell",
-    "test": "codeceptjs run --verbose --grep",
+    "test": "codeceptjs run --reporter mocha-junit-reporter --verbose --grep",
     "test:chrome": "BROWSER_TYPE=chrome npx codeceptjs run ./tests/search.test.ts --verbose --override",
-    "test:search": "codeceptjs run ./tests/search.test.ts --verbose --override",
+    "test:search": "codeceptjs run ./tests/search.test.ts --reporter mocha-junit-reporter --verbose --override",
     "test:all": "codeceptjs run --verbose ",
     "test:tagged": "./run-tagged-tests.sh"
   },
@@ -26,6 +26,7 @@
     "cspell": "^6.31.1",
     "dotenv": "^16.0.3",
     "eslint": "^8.51.0",
+    "mocha-junit-reporter": "^2.2.1",
     "selenium-webdriver": "^4.14.0",
     "webdriver": "^8.18.2"
   },

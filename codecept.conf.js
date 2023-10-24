@@ -23,7 +23,7 @@ const currentDate = new Date()
 console.info('current date:', currentDate)
 
 const BASE_URL = process.env.BASE_URL || ''
-const BROWSER_TYPE = process.env.BROWSER_TYPE || ["chrome","MicrosoftEdge","firefox"]
+const BROWSER_TYPE = process.env.BROWSER_TYPE || ["chrome", "MicrosoftEdge", "firefox"]
 const BROWSER_WINDOW_SIZE = process.env.BROWSER_WINDOW_SIZE || '1920x1080'
 
 const SCREENSHOT_SUBFOLDER = `${BROWSER_TYPE}/${BROWSER_WINDOW_SIZE}`
@@ -41,12 +41,11 @@ exports.config = {
       fullPageScreenshots: process.env.FULL_PAGE_SCREENSHOT === 'true',
       show: process.env.SHOW_BROWSER === 'true',
       url: `https://${BASE_URL}`,
-      video: process.env.CAPTURE_VIDEO === 'false',
       waitForAction: 200,
       waitForNavigation: 'networkidle',
       windowSize: BROWSER_WINDOW_SIZE,
     },
-  
+
     // WebDriver: {
     //   url: BASE_URL,
     //   browser: BROWSER_TYPE,
@@ -64,7 +63,11 @@ exports.config = {
   include: {
     I: './steps_file.js',
   },
-  mocha: {},
+  mocha: {
+    "reporterOptions": {
+      "mochaFile": "output/result.xml"
+    }
+  },
   output: './output',
   plugins: {
     allure: {
